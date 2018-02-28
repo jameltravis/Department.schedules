@@ -12,7 +12,8 @@ from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 class ISchedule(model.schema):
 
     title = schema.TextLine(
-        title=_(u'Title'),
+        title=(u'Department and Semester'),
+        description=(u'Ex: Biology Fall 2009'),
         required=True,
     )
 

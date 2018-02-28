@@ -4,4 +4,4 @@
 from plone.autoform import model
 
 class ICourses(model.Schema):
-    
+    """Schema for entering courses."""
