@@ -6,25 +6,28 @@
 Department.schedules
 ==============================================================================
 
-Tell me what your product does
+Used for proposing course schedules at York College. 
 
 Features
 --------
 
-- Can be bullet points
-
+- View courses currently offered
+- Specify which courses you would like to modify, remove or add to the master schedule.
+- For Executives: Approve or deny requests to change the master schedules.
+- For IT Admins: Add or remove courses from course vocubularies.
 
 Examples
 --------
 
 This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+- Coming soon!
 
 
 Documentation
 -------------
 
 Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+- Full documentation is coming soon!
 
 
 Translations
@@ -40,6 +43,9 @@ Installation
 
 Install Department.schedules by adding it to your buildout::
 
+    [sources]
+    Department.schedules = git https://git.york.cuny.edu/jtravis1/Department.schedules.git
+
     [buildout]
 
     ...
@@ -48,22 +54,28 @@ Install Department.schedules by adding it to your buildout::
         Department.schedules
 
 
-and then running ``bin/buildout``
+and then running ``bin/buildout`` from your zinstanc or zeocluster directory 
+Note: if ``[sources]`` isn't included in your buildout, include it. Feel free to copy and paste
+the following above ``[buildout]`` ::
+
+    [sources]
+    Department.schedules = git https://git.york.cuny.edu/jtravis1/Department.schedules.git
+
+
 
 
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/collective/Department.schedules/issues
-- Source Code: https://github.com/collective/Department.schedules
-- Documentation: https://docs.plone.org/foo/bar
+- Source Code: https://git.york.cuny.edu/jtravis1/Department.schedules
+- Documentation: https://git.york.cuny.edu/jtravis1/Department.schedules
 
 
 Support
 -------
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+If you are having issues, please call/email someone who will call/email someone else, who will then call/email me.
+Just kidding, email me at: jtravis1@york.cuny.edu
 
 
 License
