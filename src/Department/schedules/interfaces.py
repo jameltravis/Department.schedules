@@ -9,16 +9,3 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 class IDepartmentSchedulesLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
-
-
-class ISchedule(Interface):
-
-    title = schema.TextLine(
-        title=_(u'Title'),
-        required=True,
-    )
-
-    description = schema.Text(
-        title=_(u'Description'),
-        required=False,
-    )
