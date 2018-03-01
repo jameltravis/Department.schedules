@@ -46,6 +46,8 @@ Install Department.schedules by adding it to your buildout::
     [sources]
     Department.schedules = git https://git.york.cuny.edu/jtravis1/Department.schedules.git
 
+    ...
+
     [buildout]
 
     ...
