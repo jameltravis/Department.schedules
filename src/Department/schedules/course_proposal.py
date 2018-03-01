@@ -20,7 +20,7 @@ class ISchedule(model.schema):
     # Data grid for Course requests
     form.widget(newCourses=DataGridFieldFactory)
     newCourses = schema.List(
-        title=(u'Please enter your phone numbers'),
-        value_type=DictRow(title=(u'Phone numbers'), schema=ICourses),
+        title=(u'Please enter courses you would'),
+        value_type=DictRow(title=(u'Courses'), schema=ICourses),
         required=False,
     )
