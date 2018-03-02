@@ -2,7 +2,7 @@
 """Vacubularies used for choice fields"""
 
 from Department.courses import _
-from ..resources.vocab_gen import FACULTY
+from ..resources.vocab_source import FACULTY
 from plone import api
 from zope.interface import implements
 from zope.schema.interfaces import IContextSourceBinder
