@@ -48,7 +48,8 @@ class ICourses(model.Schema):
         values=[],
     )
 
-    courseTimes = schema.Timedelta(
+    directives.widget(courseTimes=checkboxes)
+    courseTimes = schema.List(
         title=(u'Times'),
     )
 

@@ -2,19 +2,11 @@
 """Vacubularies used for choice fields"""
 
 from Department.courses import _
+from ..resources.vocab_gen import FACULTY
 from plone import api
-
-# Stock Faculty vocabularies
-FACULTY = [
-    {
-        'department': u"Behavioral Sciences",
-        'name': u"Robert Duncan",
-        'employment_status': u"Full-Time",
-        'rank': u"Associate Professor",
-        'tenure': True,
-        'school': u"Arts and Sciences"
-        },
-]
+from zope.interface import implements
+from zope.schema.interfaces import IContextSourceBinder
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 def extend_faculty(department: str, vocabulary: list) -> list:
@@ -43,3 +35,25 @@ def extend_faculty(department: str, vocabulary: list) -> list:
     if not results:
         return sorted(map(unicode, vocabulary))
     return sorted(map(unicode, vocabulary.extend(results)))
+
+# make edit code to create a Simple Vocabulary
+class GetFaculty(object):
+    """Provides a list of faculty members according to the context.
+    """
+
+    implements(IContextSourceBinder)
+
+    def __init__(self, department: str):
+        self.department = department
+    
+    def __call__(self, context, vocabulary):
+        vocabulary = FACULTY
+        catalog = api.portal.get_tool('portal_catalog')
+        findFaculty = catalog.searchResults(**{
+            'portal_type': 'AddFaculty',
+            'department': self.department
+            })
+        results = [item for item in findFaculty if item['facultyName'] not in vocabulary]
+        if not results:
+            return sorted(map(unicode, vocabulary))
+        return sorted(map(unicode, vocabulary.extend(results)))
