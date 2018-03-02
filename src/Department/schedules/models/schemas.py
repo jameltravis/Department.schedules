@@ -9,7 +9,7 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from zope import schema
 
 class ICourses(model.Schema):
-    """Schema for entering courses."""
+    """Schema for main course datagrid."""
 
     subject = schema.Choice(
         title=(u'Course Subject'),

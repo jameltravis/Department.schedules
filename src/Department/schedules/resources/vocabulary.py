@@ -5,8 +5,17 @@ from Department.courses import _
 from plone import api
 
 # Stock Faculty vocabularies
-BEHAVIOR_FACULTY = ['Robert Duncan', 'Robin Harper']
-SOCIOLOGY = ['foo', 'bar', 'spam']
+FACULTY = [
+    {
+        'department': u"Behavioral Sciences",
+        'name': u"Robert Duncan",
+        'employment_status': u"Full-Time",
+        'rank': u"Associate Professor",
+        'tenure': True,
+        'school': u"Arts and Sciences"
+        },
+]
+
 
 def extend_faculty(department: str, vocabulary: list) -> list:
     """Extends list of instructors if necessary.
