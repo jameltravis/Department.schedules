@@ -9,7 +9,7 @@ DETAILED_FACULTY = [
     {
         'department': u"Behavioral Sciences",
         'facultyName': u"Robert Duncan",
-        'title': u"Associate Professor",
+        'titleRank': u"Associate Professor",
         'tenure': u"Yes",
         'school': u"Arts and Sciences",
     }
