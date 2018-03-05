@@ -48,13 +48,15 @@ class GetFaculty(object):
         self.department = department
     
     def __call__(self, context, vocabulary):
-        vocabulary = FACULTY
+        vocabulary = [item['name'] for item in FACULTY if item['department'] == context]
         catalog = api.portal.get_tool('portal_catalog')
         findFaculty = catalog.searchResults(**{
             'portal_type': 'AddFaculty',
             'department': self.department
             })
-        results = [item for item in findFaculty if item['facultyName'] not in vocabulary]
+        results = [item['name'] for item in findFaculty if item['name'] not in vocabulary]
         if not results:
+            # not sure if vocabulary is a list or list of dics.
+            # Write a test for this.
             return sorted(map(unicode, vocabulary))
         return sorted(map(unicode, vocabulary.extend(results)))

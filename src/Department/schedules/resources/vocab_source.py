@@ -16,4 +16,4 @@ DETAILED_FACULTY = [
     }
 ]
 # need to decide if we should filter the different dictionary keys
-FACULTY = [item[''] for item in DETAILED_FACULTY if item['']]
+FACULTY = [item['name'] for item in DETAILED_FACULTY]
