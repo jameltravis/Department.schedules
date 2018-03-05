@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """Module for Zope Schema models used for Department.schedules"""
 
-from Department.courses import _
-from Department.courses.resources import vocabulary
-from plone.autoform import model, directives
-from plone import api
-from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from zope import schema
+from plone import api
+from plone.autoform import model, directives
+from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
+from Department.courses import _
+from ..resources.vocabulary import GetFaculty
+
 
 class ICourses(model.Schema):
     """Schema for main course datagrid."""
@@ -61,5 +62,5 @@ class ICourses(model.Schema):
 
     instructor = schema.Choice(
         title=(u'Course Instructor'),
-        values=[],
+        source=GetFaculty,
     )

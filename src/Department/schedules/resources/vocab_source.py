@@ -8,12 +8,11 @@ from plone import api
 DETAILED_FACULTY = [
     {
         'department': u"Behavioral Sciences",
-        'name': u"Robert Duncan",
-        'employment_status': u"Full-Time",
-        'rank': u"Associate Professor",
+        'facultyName': u"Robert Duncan",
+        'title': u"Associate Professor",
         'tenure': u"Yes",
         'school': u"Arts and Sciences",
     }
 ]
 # need to decide if we should filter the different dictionary keys
-FACULTY = [item['name'] for item in DETAILED_FACULTY]
+FACULTY = [item['facultyName'] for item in DETAILED_FACULTY]
