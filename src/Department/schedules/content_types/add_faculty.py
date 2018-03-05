@@ -5,16 +5,6 @@ from zope import schema
 from plone.supermodel import model
 from Department.courses import _
 
-DETAILED_FACULTY = [
-    {
-        'department': u"Behavioral Sciences",
-        'facultyName': u"Robert Duncan",
-        'title': u"Associate Professor",
-        'tenure': u"Yes",
-        'school': u"Arts and Sciences",
-    }
-]
-
 
 class IAddFaculty(model.Schema):
     """Adds new faculty to the portal.
@@ -23,4 +13,29 @@ class IAddFaculty(model.Schema):
     department =  schema.Choice(
         title=(u'Department'),
         required=True,
+        source=[],
+    )
+
+    facultyName = schema.TextLine(
+        title=(u'Faculty Name'),
+        description=(u'Please add the first and last name of the faculty member'),
+        required=True,
+    )
+
+    titleRank = schema.Choice(
+        title=(u'Please select your title'),
+        required=True,
+        source=[],
+    )
+
+    tenure = schema.Choice(
+        title=(u'Do you currently hold tenure?'),
+        required=True,
+        source=[],
+    )
+
+    school = schema.Choice(
+        title=(u'Select your Academic School?'),
+        required=True,
+        source=[],
     )
