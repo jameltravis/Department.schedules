@@ -6,7 +6,7 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from plone import api
 from Department.courses import _
-from ..resources.vocab_source import FACULTY
+from Department.courses.resources.vocab_source import FACULTY
 
 
 

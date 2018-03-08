@@ -2,7 +2,6 @@
 """Initial lists used to generate vocabularies"""
 
 from Department.courses import _
-from plone import api
 
 # Behavioral Science Full time faculty
 DETAILED_FACULTY = [
@@ -16,3 +15,4 @@ DETAILED_FACULTY = [
 ]
 # need to decide if we should filter the different dictionary keys
 FACULTY = [item['facultyName'] for item in DETAILED_FACULTY]
+
