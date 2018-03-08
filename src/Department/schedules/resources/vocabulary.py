@@ -37,8 +37,7 @@ def extend_faculty(department: str, vocabulary: list) -> list:
         return sorted(map(unicode, vocabulary))
     return sorted(map(unicode, vocabulary.extend(results)))
 
-# make edit code to create a Simple Vocabulary
-# Make sure to double check if GetFaculty -> list items or list of dictionaries
+
 class GetFaculty(object):
     """Source for schema.Choice fields.
     

@@ -12,14 +12,20 @@ from ..resources.vocabulary import GetFaculty
 class IAddCourse(model.Schema):
     """Schema for main course datagrid."""
 
+    title = schema.TextLine(
+        title=(u'Department Name and Semester'),
+        description=(u'Ex: English Fall 2010'),
+        required=True
+    )
+
     subject = schema.Choice(
         title=(u'Course Subject'),
         values=[],
     )
 
-    courseNumber = schema.Choice(
+    courseNumber = schema.TextLine(
         title=(u'Course Number'),
-        values=[],
+        required=True,
     )
 
     courseSection = schema.TextLine(

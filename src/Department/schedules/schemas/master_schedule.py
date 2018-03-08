@@ -26,18 +26,18 @@ class ISchedule(model.schema):
         required=False,
     )
 
-    departmentComments = schema.Text(
-        title=(u'Dpartmental Comments'),
-        description=(u'Comment box for department members'),
-        required=False,
-    )
+    # departmentComments = schema.Text(
+    #     title=(u'Dpartmental Comments'),
+    #     description=(u'Comment box for department members'),
+    #     required=False,
+    # )
 
-    deanComments = schema.Text(
-        title=(u'Dean Comments'),
-        required=False,
-    )
+    # deanComments = schema.Text(
+    #     title=(u'Dean Comments'),
+    #     required=False,
+    # )
 
-    provostComments = schema.Text(
-        title=(u'Provost Comment section'),
-        required=False,
-    )
+    # provostComments = schema.Text(
+    #     title=(u'Provost Comment section'),
+    #     required=False,
+    # )

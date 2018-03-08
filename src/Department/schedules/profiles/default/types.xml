@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object name="portal_types" meta_type="Plone Types Tool">
-  <object name="Schedule" meta_type="Dexterity FTI"/>
+  <object name="AddCourse" meta_type="Dexterity FTI"/>
+  <object name="AddFaculty" meta_type="Dexterity FTI"/>
+  <object name="MasterSchedule" meta_type="Dexterity FTI"/>
+  <object name="Workload" meta_type="Dexterity FTI"/>
 </object>
