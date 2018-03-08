@@ -47,6 +47,7 @@ setup(
         'plone.autoform',
         'plone.directives.form',
         'plone.namedfile',
+        'plone.memoize',
         'z3c.form',
         'collective.z3cform.datagridfield>=1.3.0',
     ],
