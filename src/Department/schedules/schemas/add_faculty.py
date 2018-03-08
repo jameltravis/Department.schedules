@@ -10,6 +10,11 @@ class IAddFaculty(model.Schema):
     """Adds new faculty to the portal.
     """
 
+    title = schema.TextLine(
+        title=(u"New Faculty Member's Name"),
+        required=True
+    )
+
     department =  schema.Choice(
         title=(u'Department'),
         required=True,
@@ -31,7 +36,11 @@ class IAddFaculty(model.Schema):
     tenure = schema.Choice(
         title=(u'Do you currently hold tenure?'),
         required=True,
-        source=[],
+        values=[
+            u'Select One',
+            u'Yes',
+            u'No'
+        ],
     )
 
     school = schema.Choice(

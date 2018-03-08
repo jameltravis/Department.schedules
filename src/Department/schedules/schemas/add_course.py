@@ -30,7 +30,7 @@ class IAddCourse(model.Schema):
 
     courseSection = schema.TextLine(
         title=(u'Section'),
-        values=[],
+        required=True,
     )
 
     # Maybe this should be ommitted?
