@@ -19,15 +19,15 @@ FACULTY = [item['facultyName'] for item in DETAILED_FACULTY]
 # Basic idea is this - 'department': ["subject1", "subject2", "subject3"]
 DEPARTMENT_SUBJECTS = [
     {
-        'Behavioral_Sciences': [],
-        'Biology': [],
-        'chemistry':[],
-        'physics': [],
-        'English': [],
-        'history': [],
-        'math': [],
-        'fine_arts': [],
-        'world_languages': [],
+        'behavior': ["POL", "PSY", "SOC"],
+        'biology': ["BIO", "BTEC"],
+        'chemistry':["CHEM", "PHS"],
+        'physics': ["PHY", "EHS", "GEOL"],
+        'English': ["ENG", "WRIT", "JOUR"],
+        'history': ["ANTH", "BLST", "HIST", "CLDV", "PHIL"],
+        'math': ["MATH", "CS"],
+        'fine_arts': ["?"],
+        'world_languages': ["FREN", "SPAN", "HUM", "CRE", "ESL", "FA", "TA", "ITAL", "PRST", "AAS", "WLIT"],
         'accounting_finance': [],
         'business_economics': [],
         'physical_education': [],
@@ -35,6 +35,6 @@ DEPARTMENT_SUBJECTS = [
         'nursing': [],
         'occupational_therapy': [],
         'social_work': [],
-        'teacher_education': [],
+        'teacher_ed': [],
     }
 ]

@@ -20,7 +20,7 @@ class IAddCourse(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
-        values=[],
+        values=['A value'],
     )
 
     courseNumber = schema.TextLine(
@@ -30,38 +30,5 @@ class IAddCourse(model.Schema):
 
     courseSection = schema.TextLine(
         title=(u'Section'),
-        required=True,
-    )
-
-    # Maybe this should be ommitted?
-    enrollmentCapacity = schema.Int(
-        title=(u'Enrollment Capacity'),
-        max=200,
-    )
-
-    waitList = schema.Int(
-        title=(u'Wait List'),
-        max=200,
-    )
-
-    component = schema.Choice(
-        title=(u'Course Component'),
-        values=[],
-    )
-
-    directives.widget(classDays=checkboxes)
-    courseDays = schema.List(
-        title=(u'Days'),
-        values=[],
-    )
-
-    directives.widget(courseTimes=checkboxes)
-    courseTimes = schema.List(
-        title=(u'Times'),
-    )
-
-    directives.widget(classDays=checkboxes)
-    attributes = schema.List(
-        title=(u'attributes'),
-        values=[],
+        required=False,
     )
