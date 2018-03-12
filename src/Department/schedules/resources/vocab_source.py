@@ -6,7 +6,7 @@ from Department.courses import _
 # Behavioral Science Full time faculty
 DETAILED_FACULTY = [
     {
-        'department': u"Behavioral_Sciences",
+        'department': u"behavior",
         'facultyName': u"Robert Duncan",
         'titleRank': u"Associate Professor",
         'tenure': u"Yes",
@@ -26,15 +26,15 @@ DEPARTMENT_SUBJECTS = [
         'English': ["ENG", "WRIT", "JOUR"],
         'history': ["ANTH", "BLST", "HIST", "CLDV", "PHIL"],
         'math': ["MATH", "CS"],
-        'fine_arts': ["?"],
+        'fine_arts': ["AC", "FA", "CT", "SPCH", "MUS", "TA"],
         'world_languages': ["FREN", "SPAN", "HUM", "CRE", "ESL", "FA", "TA", "ITAL", "PRST", "AAS", "WLIT"],
-        'accounting_finance': [],
-        'business_economics': [],
-        'physical_education': [],
-        'health_professions': [],
-        'nursing': [],
-        'occupational_therapy': [],
-        'social_work': [],
-        'teacher_ed': [],
+        'accounting_finance': ["ACC", "FINC"],
+        'business_economics': ["ECON", "BUS", "MKT"],
+        'physical_education': ["GERO", "HE", "PH", "PH"],
+        'health_professions': ["HPGC", "CLS", "HS", "HPPA"],
+        'nursing': ["NURS"],
+        'occupational_therapy': ["OT"],
+        'social_work': ["SCWK"],
+        'teacher_ed': ["EDUC"],
     }
 ]
