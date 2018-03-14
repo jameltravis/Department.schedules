@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
-"""Module for Zope Schema models used for Department.schedules"""
+"""The ICourses class, used to produce the main datagrid field, is below."""
 
 from zope import schema
 from plone import api
 from plone.autoform import model, directives
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from Department.schedules import _
-from Department.schedules.resources.vocabulary import GetFaculty
+from Department.schedules.resources.vocabulary import (
+    GetFaculty,
+    CourseSubjectVocab,
+    DAYS,
+    HOURS,
+    MINUTES,
+    COURSE_ATTRIBUTES,
+    COURSE_COMPONENTS,
+    TIME_OF_DAY
+    )
 
 
 # Need vocabs for 'component', 'courseDays', 'attributes'
@@ -15,14 +24,15 @@ from Department.schedules.resources.vocabulary import GetFaculty
 class ICourses(model.Schema):
     """Schema for main course datagrid."""
 
-# Make title read only
+# Make title read only, unless you intend on making a custom view
+# (which will probably happen)
     title = schema.TextLine(
         title=(u"What semester is this for?")
     )
 
     subject = schema.Choice(
         title=(u'Course Subject'),
-        values=[],
+        source=CourseSubjectVocab,
     )
 
     courseNumber = schema.TextLine(
@@ -47,29 +57,68 @@ class ICourses(model.Schema):
         max=200,
     )
 
-    component = schema.Choice(
-        title=(u'Course Component'),
-        values=[],
-    )
 
+# Days of the Week
     directives.widget(classDays=checkboxes)
     courseDays = schema.List(
         title=(u'Days'),
-        values=[],
+        required=False,
+        value_type=schema.Choice(
+            values=DAYS
+        ),
     )
 
-    directives.widget(courseTimes=checkboxes)
-    courseTimes = schema.List(
-        title=(u'Times'),
+    hourStart = schema.Choice(
+        title=(u'Time Start'),
+        values=HOURS,
+    )
+
+    minuteStart = schema.Choice(
+        title='',
+        values=MINUTES,
+    )
+
+    startTimeOfDay = schema.Choice(
+        title='',
+        required=True,
+        values=TIME_OF_DAY
+    )
+
+    hoursEnd = schema.Choice(
+        title=(u'Time End'),
+        values=HOURS,
+    )
+
+    minutesEnd = schema.Choice(
+        title='',
+        values=MINUTES,
+    )
+
+    endTimeOfDay = schema.Choice(
+        title='',
+        values=TIME_OF_DAY
+    )
+
+    directives.widget(classDays=checkboxes)
+    component = schema.List(
+        title=(u'Course Component'),
+        required=False,
+        value_type=schema.Choice(
+            values=COURSE_COMPONENTS,
+        )
     )
 
     directives.widget(classDays=checkboxes)
     attributes = schema.List(
         title=(u'attributes'),
-        values=[],
+        value_type=schema.Choice(
+            values=COURSE_ATTRIBUTES,
+            default=(u'None')
+        )
     )
 
     instructor = schema.Choice(
         title=(u'Course Instructor'),
+        required=False,
         source=GetFaculty,
     )

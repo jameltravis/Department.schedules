@@ -7,8 +7,8 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from plone import api
 from plone.momoize import ram
-from Department.courses import _
-from Department.courses.resources.vocab_source import DEPARTMENT_SUBJECTS, FACULTY
+from Department.schedules import _
+from Department.schedules.resources.vocab_source import DEPARTMENT_SUBJECTS, FACULTY
 
 
 def __catalog_count_cachekey():
@@ -85,6 +85,6 @@ class CourseSubjectVocab(object):
     implements(IContextSourceBinder)
     
     def __call__(self, context, vocabulary):
-        vocabulary = [courses for department, courses in DEPARTMENT_SUBJECTS if department == context]
-        return SimpleVocabulary.fromValues(sorted(map(unicode, vocabulary)))
+        vocabulary = [courses[context] for courses in DEPARTMENT_SUBJECTS][0]
+        return SimpleVocabulary.fromValues(sorted(vocabulary))
 

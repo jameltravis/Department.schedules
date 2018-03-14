@@ -6,8 +6,8 @@ from plone.directives import form
 from plone.supermodel import model
 from collective.z3cform.datagridfield import DictRow
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
-from Department.courses import _
-from Department.courses.models.schemas import ICourses
+from Department.schedules import _
+from Department.schedules.models.schemas import ICourses
 
 
 class ISchedule(model.schema):
