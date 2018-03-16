@@ -4,8 +4,6 @@
 Please note: many functions below are cached using ```plone.memoize``` . To change
 the caching, modify/change the argument passed to the ```ram.cache()``` decorator.
 """
-
-# from collections import Counter
 from time import time
 from zope.interface import implements
 from zope.schema.interfaces import IContextSourceBinder
@@ -13,13 +11,12 @@ from zope.schema.vocabulary import SimpleVocabulary
 from plone import api
 from plone.momoize import ram
 from Department.schedules import _
-from Department.schedules.resources import cachekeys 
+from Department.schedules.resources.cachekeys import __course_component_cachekey
 from Department.schedules.resources.vocab_source import (
     DEPARTMENT_SUBJECTS,
     FACULTY,
     COURSE_COMPONENTS
     )
-
 
 # Vocabularies below
 
@@ -97,7 +94,7 @@ class CourseSubjectVocab(object):
     Provides a list of faculty members and makes them a vocabulary.
     Searches the catalog for new courses, if new courses are present,
     ```extend()``` is called to extend the list of courses. Strings
-    converted to unicode (this is Python 2, after all) then passed
+    converted to unicode (this is Python2, after all) then passed
     to ```SimpleVocabulary.fromValues```.
 
     Args:
@@ -115,7 +112,7 @@ class CourseSubjectVocab(object):
     """
 
     implements(IContextSourceBinder)
-    @ram.cache()
+    @ram.cache(lambda *args: time() // 86400)
     def __call__(self, context, vocabulary):
         vocabulary = [courses[context] for courses in DEPARTMENT_SUBJECTS][0]
         return SimpleVocabulary.fromValues(sorted(vocabulary))
