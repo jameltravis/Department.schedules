@@ -2,32 +2,26 @@
 """The ICourses class, used to produce the main datagrid field, is below."""
 
 from zope import schema
-from plone import api
 from plone.autoform import model, directives
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from Department.schedules import _
-from Department.schedules.resources.vocabulary import (
-    GetFaculty,
-    CourseSubjectVocab,
+from Department.schedules.resources.vocabulary import GetFaculty, CourseSubjectVocab
+from Department.schedules.resources.vocab_source import (
     DAYS,
     HOURS,
     MINUTES,
     COURSE_ATTRIBUTES,
     COURSE_COMPONENTS,
-    TIME_OF_DAY
-    )
-
-
-# Need vocabs for 'component', 'courseDays', 'attributes'
-#  Also need to figure out how we are going to implement the course times
+    TIME_OF_DAY,
+    SEMESTERS
+)
 
 class ICourses(model.Schema):
     """Schema for main course datagrid."""
 
-# Make title read only, unless you intend on making a custom view
-# (which will probably happen)
-    title = schema.TextLine(
-        title=(u"What semester is this for?")
+    title = schema.Choice(
+        title=(u"What semester is this for?"),
+        default=(u'Select One'),
     )
 
     subject = schema.Choice(
@@ -45,18 +39,16 @@ class ICourses(model.Schema):
         default=(u"YY"),
     )
 
-    # Maybe this should be ommitted?
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
-        max=200,
+        max=500,
         default=50
     )
 
     waitList = schema.Int(
         title=(u'Wait List'),
-        max=200,
+        max=500,
     )
-
 
 # Days of the Week
     directives.widget(classDays=checkboxes)
@@ -65,16 +57,19 @@ class ICourses(model.Schema):
         required=False,
         value_type=schema.Choice(
             values=DAYS
-        ),
+        )
     )
 
+# Time field start
     hourStart = schema.Choice(
         title=(u'Time Start'),
+        required=True,
         values=HOURS,
     )
 
     minuteStart = schema.Choice(
         title='',
+        required=True,
         values=MINUTES,
     )
 
@@ -86,11 +81,13 @@ class ICourses(model.Schema):
 
     hoursEnd = schema.Choice(
         title=(u'Time End'),
+        required=True,
         values=HOURS,
     )
 
     minutesEnd = schema.Choice(
         title='',
+        required=True,
         values=MINUTES,
     )
 
@@ -98,6 +95,8 @@ class ICourses(model.Schema):
         title='',
         values=TIME_OF_DAY
     )
+# time field end
+
 
     directives.widget(classDays=checkboxes)
     component = schema.List(

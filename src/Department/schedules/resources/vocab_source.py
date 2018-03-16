@@ -66,3 +66,5 @@ COURSE_COMPONENTS = [
 ]
 
 TIME_OF_DAY = [u'AM', u'PM']
+
+SEMESTER = [u'Winter', u'Spring', u'Summer', u'Fall']
