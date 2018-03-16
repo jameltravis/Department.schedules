@@ -16,6 +16,12 @@ from Department.schedules.resources.vocab_source import (
     SEMESTERS
 )
 
+# The plan is to create a few datagrids:
+# for the Day Classes, Evening classes and Weekend classes
+
+# Create instances of ICourses to facilite that need, eliminating
+# fields like courseTime for something more generic
+
 class ICourses(model.Schema):
     """Schema for main course datagrid."""
 
