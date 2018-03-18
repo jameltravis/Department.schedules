@@ -51,11 +51,15 @@ DEPARTMENT_SUBJECTS = [
     }
 ]
 
-DAYS = [u'Mon', u'Tues', u'Wed', u'Thurs', u'Fri', u'Sat', u'Sun']
+WEEK_DAYS = [u'Mon', u'Tues', u'Wed', u'Thurs', u'Fri']
+
+WEEKEND = [u'Sat', u'Sun']
+
+DAYTIME_HOURS = [u'7', u'8', u'9', u'10', u'11', u'12', u'1', u'2', u'3', u'4'] 
 
 HOURS = [u'1', u'2', u'3', u'4', u'5', u'6', u'7', u'8', u'9', u'10', u'11', u'12']
 
-MINUTES = [u'00', u'05', u'10', u'15', u'20', u'25', u'30', u'35', u'40', u'45', u'50', u'55']
+MINUTES = [u'00', u'10', u'20', u'30', u'40', u'50']
 
 COURSE_ATTRIBUTES = [
     u'Add Smart Room',

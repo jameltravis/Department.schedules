@@ -13,7 +13,10 @@ from Department.schedules.resources.vocab_source import (
     COURSE_ATTRIBUTES,
     COURSE_COMPONENTS,
     TIME_OF_DAY,
-    SEMESTERS
+    SEMESTERS,
+    WEEK_DAYS,
+    WEEKEND,
+    DAYTIME_HOURS
 )
 
 # The plan is to create a few datagrids:
@@ -56,7 +59,7 @@ class ICourses(model.Schema):
         max=500,
     )
 
-# Days of the Week
+    # Days of the Week
     directives.widget(classDays=checkboxes)
     courseDays = schema.List(
         title=(u'Days'),
@@ -66,7 +69,8 @@ class ICourses(model.Schema):
         )
     )
 
-# Time field start
+    # Time field start
+    # Create if statement 
     hourStart = schema.Choice(
         title=(u'Time Start'),
         required=True,
@@ -127,3 +131,19 @@ class ICourses(model.Schema):
         required=False,
         source=GetFaculty,
     )
+
+    def __init__(self, timeOfDay, weekend):
+        self.timeOfDay = timeOfDay
+        self.weekend = weekend
+
+
+DAY_SCHEMA = ICourses('Moring', 'Weekday')
+
+# Do more of these
+DAY_SCHEMA.courseDays = schema.List(
+    title=(u'Days'),
+    value_type=schema.Choice(
+        values=WEEK_DAYS,
+        default=(u'Select One')
+    )
+)
