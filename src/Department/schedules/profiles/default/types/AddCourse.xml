@@ -14,7 +14,7 @@
       name="description">Add a previously unlisted course</property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">NewCourse</property>
+  <property name="factory">AddCourse</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -30,7 +30,7 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">Department.schedules.add_course.IAddCourse</property>
+  <property name="schema">Department.schedules.schemas.add_course.IAddCourse</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">

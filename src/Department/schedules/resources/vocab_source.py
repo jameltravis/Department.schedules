@@ -17,6 +17,10 @@ FACULTY = [item['facultyName'] for item in DETAILED_FACULTY]
 
 
 # Department Course Subjects
+# for list of departments: DEPARTMENT_SUBJECTS[0].keys()
+# Check to see if you can make a vocubulary out of the list below
+# and their proper names. In other words, the programmatic names and
+# u'labels'.
 DEPARTMENT_SUBJECTS = [
     {
         'behavior': [u"POL", u"PSY", u"SOC"],
@@ -51,11 +55,39 @@ DEPARTMENT_SUBJECTS = [
     }
 ]
 
+DEPARTMENTS = [
+    {
+        u"Behavioral Sciences",
+        u"Biology",
+        u"Chemistry",
+        u"Earth and Physical Sciences",
+        u"English",
+        u"History, Philosophy, and Anthropology",
+        u"Mathematics and Computer Science",
+        u"Performing and Fine Arts",
+        u"World Languages, Literature, and Humanities",
+        u"Accounting and Finance",
+        u"Business and Economics",
+        u"Health and Physical Education",
+        u"Health Professions",
+        u"Nursing",
+        u"Occupational Therapy",
+        u"Social Work",
+        u"Teacher Education",
+    }
+]
+
+SCHOOLS = [
+    u'Arts and Sciences',
+    u'Business and Information Systems',
+    u'Health Sciences and Professional Programs'
+]
+
 WEEK_DAYS = [u'Mon', u'Tues', u'Wed', u'Thurs', u'Fri']
 
 WEEKEND = [u'Sat', u'Sun']
 
-DAYTIME_HOURS = [u'7', u'8', u'9', u'10', u'11', u'12', u'1', u'2', u'3', u'4'] 
+# DAYTIME_HOURS = [u'7', u'8', u'9', u'10', u'11', u'12', u'1', u'2', u'3', u'4', u'6'] 
 
 HOURS = [u'1', u'2', u'3', u'4', u'5', u'6', u'7', u'8', u'9', u'10', u'11', u'12']
 

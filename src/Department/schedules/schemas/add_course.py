@@ -5,8 +5,8 @@ from zope import schema
 from plone import api
 from plone.autoform import model, directives
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
-from Department.courses import _
-from ..resources.vocabulary import GetFaculty
+from Department.schedules import _
+from Department.schedules.resources.vocabulary import GetFaculty
 
 
 class IAddCourse(model.Schema):

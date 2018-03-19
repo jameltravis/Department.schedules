@@ -3,7 +3,13 @@
 
 from zope import schema
 from plone.supermodel import model
-from Department.courses import _
+from Department.schedules import _
+from Department.schedules.resources.vocab_source import SCHOOLS
+from Department.schedules.resources.vocabulary import (
+    get_schools,
+    get_departments
+    )
+
 
 
 class IAddFaculty(model.Schema):
@@ -11,20 +17,19 @@ class IAddFaculty(model.Schema):
     """
 
     title = schema.TextLine(
-        title=(u"New Faculty Member's Name"),
+        title=(u"New Faculty Member's First and Last Name"),
         required=True
     )
 
     department =  schema.Choice(
         title=(u'Department'),
         required=True,
-        source=[],
+        source=,
     )
 
-    facultyName = schema.TextLine(
-        title=(u'Faculty Name'),
-        description=(u'Please add the first and last name of the faculty member'),
-        required=True,
+    emplID = schema.TextLine(
+        title=(u'CUNYFirst Empl ID'),
+        required=False,
     )
 
     titleRank = schema.Choice(
@@ -44,7 +49,7 @@ class IAddFaculty(model.Schema):
     )
 
     school = schema.Choice(
-        title=(u'Select your Academic School?'),
+        title=(u'Select your Academic School'),
         required=True,
-        source=[],
+        source=get_schools,
     )

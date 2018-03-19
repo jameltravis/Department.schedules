@@ -2,19 +2,19 @@
 <object
     i18n:domain="Department.schedules"
     meta_type="Dexterity FTI"
-    name="MasterSchedule"
+    name="AddAttribute"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Course Schedule</property>
+      name="title">Add New Attribute</property>
   <property
       i18n:translate=""
-      name="description">Main Course Schedule Grid</property>
+      name="description">Form for adding new course attributes</property>
 
   <property name="allow_discussion">True</property>
-  <property name="factory">Schedule</property>
+  <property name="factory">AddAttribute</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -30,7 +30,7 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">Department.schedules.master_schedule.ISchedule</property>
+  <property name="schema">Department.schedules.schemas.add_faculty.IAddAttribute</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">

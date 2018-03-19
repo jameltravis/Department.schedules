@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-"""The ICourses class, used to produce the main datagrid field, is below."""
+"""Schemata used for datagrid fields."""
 
 from zope import schema
 from plone.autoform import model, directives
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from Department.schedules import _
-from Department.schedules.resources.vocabulary import GetFaculty, CourseSubjectVocab
+from Department.schedules.resources.vocabulary import (
+    GetFaculty,
+    CourseSubjectVocab
+    )
 from Department.schedules.resources.vocab_source import (
     DAYS,
     HOURS,
@@ -16,7 +19,6 @@ from Department.schedules.resources.vocab_source import (
     SEMESTERS,
     WEEK_DAYS,
     WEEKEND,
-    DAYTIME_HOURS
 )
 
 # The plan is to create a few datagrids:
@@ -31,6 +33,7 @@ class ICourses(model.Schema):
     title = schema.Choice(
         title=(u"What semester is this for?"),
         default=(u'Select One'),
+        values=SEMESTERS,
     )
 
     subject = schema.Choice(
@@ -120,6 +123,7 @@ class ICourses(model.Schema):
     directives.widget(classDays=checkboxes)
     attributes = schema.List(
         title=(u'attributes'),
+        required=False,
         value_type=schema.Choice(
             values=COURSE_ATTRIBUTES,
             default=(u'None')
@@ -137,13 +141,68 @@ class ICourses(model.Schema):
         self.weekend = weekend
 
 
-DAY_SCHEMA = ICourses('Moring', 'Weekday')
+WEEKDAY_SCHEMA = ICourses('Morning', 'Weekday')
 
 # Do more of these
-DAY_SCHEMA.courseDays = schema.List(
+WEEKDAY_SCHEMA.courseDays = schema.List(
     title=(u'Days'),
     value_type=schema.Choice(
         values=WEEK_DAYS,
         default=(u'Select One')
     )
 )
+
+WEEKEND_SCHEMA = ICourses('Morning', 'Weekend')
+
+WEEKEND_SCHEMA.courseDays = schema.List(
+    title=(u'Days'),
+    value_type=schema.Choice(
+        values=WEEKEND,
+        default=(u'Select One')
+    )
+)
+
+
+class IAddFaculty(model.Schema):
+    """Adds new faculty to the portal.
+    """
+
+    title = schema.TextLine(
+        title=(u"New Faculty Member's Name"),
+        required=True
+    )
+
+    department =  schema.Choice(
+        title=(u'Department'),
+        required=True,
+        source=[],
+    )
+
+    facultyName = schema.TextLine(
+        title=(u'Faculty Name'),
+        description=(u'Please add the first and last name of the faculty member'),
+        required=True,
+    )
+
+    titleRank = schema.Choice(
+        title=(u'Please select your title'),
+        required=True,
+        source=[],
+    )
+
+    tenure = schema.Choice(
+        title=(u'Do you currently hold tenure?'),
+        required=True,
+        values=[
+            u'Select One',
+            u'Yes',
+            u'No'
+        ],
+    )
+
+    school = schema.Choice(
+        title=(u'Select your Academic School?'),
+        required=True,
+        source=[],
+    )
+

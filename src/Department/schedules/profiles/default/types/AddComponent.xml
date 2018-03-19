@@ -2,19 +2,19 @@
 <object
     i18n:domain="Department.schedules"
     meta_type="Dexterity FTI"
-    name="Schedule"
+    name="AddComponent"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Main Course Schedule</property>
+      name="title">Add New Course Component</property>
   <property
       i18n:translate=""
-      name="description"></property>
+      name="description">Form to add new course component</property>
 
-  <property name="allow_discussion">False</property>
-  <property name="factory">Schedule</property>
+  <property name="allow_discussion">True</property>
+  <property name="factory">AddComponent</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -30,7 +30,7 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">Department.schedules.schemas.schedule.ISchedule</property>
+  <property name="schema">Department.schedules.schemas.add_component.IAddComponent</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
