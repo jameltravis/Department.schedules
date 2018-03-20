@@ -14,7 +14,7 @@ from Department.schedules import _
 from Department.schedules.resources.cachekeys import (
     __course_component_cachekey,
     __department_cachekey
-    )
+)
 from Department.schedules.resources.vocab_source import (
     COURSE_ATTRIBUTES,
     COURSE_COMPONENTS,
@@ -23,7 +23,7 @@ from Department.schedules.resources.vocab_source import (
     FACULTY,
     FACULTY_RANKS,
     SCHOOLS,
-    )
+)
 
 # Vocabularies below
 
@@ -61,20 +61,12 @@ def get_vocabulary(contentType, vocabularyVar):
         map(unicode.title, sorted(vocabularyVar))
     )
 
+
 GET_ATTRIBUTES = get_vocabulary('AddAttribute', COURSE_ATTRIBUTES)
 GET_COMPONENTS = get_vocabulary('AddComponent', COURSE_COMPONENTS)
 GET_DEPARTMENTS = get_vocabulary('AddDepartment', DEPARTMENTS)
-GET_RANK = get_vocabulary('AddTitleRank', FACULTY_RANKS)
-
-"""
-    COURSE_ATTRIBUTES,
-    COURSE_COMPONENTS,
-    DEPARTMENTS,
-    DEPARTMENT_SUBJECTS,
-    FACULTY,
-    SCHOOLS,
-"""
-
+GET_RANKS = get_vocabulary('AddTitleRank', FACULTY_RANKS)
+GET_SCHOOLS = get_vocabulary('AddSchool', SCHOOLS)
 
 # @ram.cache(__course_component_cachekey)
 # def get_components():
@@ -223,7 +215,9 @@ class GetFaculty(object):
     
     @ram.cache(lambda *args: time() // 86400)
     def __call__(self, context, vocabulary):
-        vocabulary = [item['name'] for item in FACULTY if item['department'] == context]
+        vocabulary = [
+            item['name'] for item in FACULTYif item['department'] == context
+        ]
         catalog = api.portal.get_tool('portal_catalog')
         findFaculty = catalog.searchResults(**{'portal_type': 'AddFaculty'})
         results = [

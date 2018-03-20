@@ -4,5 +4,8 @@
   <object name="AddFaculty" meta_type="Dexterity FTI"/>
   <object name="AddAttributes" meta_type="Dexterity FTI"/>
   <object name="AddComponents" meta_type="Dexterity FTI"/>
+  <object name="AddDepartment" meta_type="Dexterity FTI"/>
+  <object name="AddSchool" meta_type="Dexterity FTI"/>
+  <object name="AddTitleRank" meta_type="Dexterity FTI"/>
   <object name="Schedule" meta_type="Dexterity FTI"/>
 </object>
