@@ -11,6 +11,7 @@ DETAILED_FACULTY = [
         'titleRank': u"Associate Professor",
         'tenure': u"Yes",
         'school': u"Arts and Sciences",
+        'Full-Time': u"No"
     }
 ]
 FACULTY = [item['facultyName'] for item in DETAILED_FACULTY]
@@ -116,3 +117,9 @@ COURSE_COMPONENTS = [
 TIME_OF_DAY = [u'AM', u'PM']
 
 SEMESTER = [u'Winter', u'Spring', u'Summer', u'Fall']
+
+FACULTY_RANKS = [
+    u'Assistant Professor',
+    u'Associate Professor',
+    u'Professor'
+]

@@ -2,19 +2,19 @@
 <object
     i18n:domain="Department.schedules"
     meta_type="Dexterity FTI"
-    name="AddFaculty"
+    name="AddTitleRank"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Add New Faculty Member</property>
+      name="title">Add New Department to Vocabularies</property>
   <property
       i18n:translate=""
-      name="description">Form for adding new faculty member</property>
+      name="description">Form for adding new course Departments</property>
 
   <property name="allow_discussion">True</property>
-  <property name="factory">AddFaculty</property>
+  <property name="factory">AddTitleRank</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -30,7 +30,7 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">Department.schedules.schemas.add_faculty.IAddFaculty</property>
+  <property name="schema">Department.schedules.schemas.add_faculty.IAddTitleRank</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
@@ -38,7 +38,7 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++AddFaculty</property>
+  <property name="add_view_expr">string:${folder_url}/++add++AddTitleRank</property>
   <property name="immediate_view">view</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>

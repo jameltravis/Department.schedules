@@ -38,7 +38,7 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Schedule</property>
+  <property name="add_view_expr">string:${folder_url}/++add++AddComponent</property>
   <property name="immediate_view">view</property>
   <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>

@@ -21,101 +21,175 @@ from Department.schedules.resources.vocab_source import (
     DEPARTMENTS,
     DEPARTMENT_SUBJECTS,
     FACULTY,
+    FACULTY_RANKS,
     SCHOOLS,
     )
 
 # Vocabularies below
 
-@ram.cache(__course_component_cachekey)
-def get_components():
-    """Returns the course components.
-
-    Course components are cached according to 
-
-    Args:
-        None.
-    
-    Returns:
-        list: [u'foo', u'bar', u'spam']
-
-    Example:
-        >>>get_components()
-        [u'a', u'very', u'long', u'list']
-    """
-    catalog = api.portal.get_tool('portal_catalog')
-    getComponents = catalog.searchResults(**{'portal_type': 'AddComponent'})
-    components = [item['courseComponent'] for item in getComponents]
-
-    if components:
-        return SimpleVocabulary.fromValues(sorted(COURSE_COMPONENTS.extend(components)))
-    return SimpleVocabulary.fromValues(sorted(COURSE_COMPONENTS))
-
-@ram.cache(__department_cachekey)
-def get_schools():
-    """Provides list/vocabulary of Academic Schools.
-
-    Args:
-        None.
-    
-    Returns:
-        list: [u'foo', u'bar', u'spam']
-
-    Example:
-        >>>get_schools()
-        [u'Arts and Sciences', u'Business and Information Systems', u'Health Sciences']
-    """
-    catalog = api.portal.get_tool('portal_catalog')
-    getSchools = catalog.searchResults(**{'portal_type': 'AddSchool'})
-    schools = [item['title'] for item in getSchools]
-
-    if schools:
-        return SimpleVocabulary.fromValues(sorted(SCHOOLS.extend(schools)))
-    return SimpleVocabulary.fromValues(sorted(SCHOOLS))
-
-
-@ram.cache(lambda *args: time() // 86400)
-def course_attributes():
-    """Returns course attributes.
-
-    Args:
-        None.
-    
-    Returns:
-        list: [u'foo', u'bar', u'spam']
-
-    Example:
-        >>>course_attributes()
-        [u'a', u'very', u'long', u'list']
-    """
-    catalog = api.portal.get_tool('portal_catalog')
-    getAttributes = catalog.searchResults(**{'portal_type': 'AddAttribute'})
-    attributes = [item['title'] for item in getAttributes]
-
-    if attributes:
-        return SimpleVocabulary.fromValues(sorted(COURSE_ATTRIBUTES.extend(attributes)))
-    return SimpleVocabulary.fromValues(sorted(COURSE_ATTRIBUTES))
-
-
-def get_departments():
+# Make sure that each content type is taken from the 'title' field
+@ram.cache(lambda *args: time() // 3600)
+def get_vocabulary(contentType, vocabularyVar):
     """Returns list as Plone vocabulary.
+
+    Searches the portal for a given content type and appends the 'title' field
+    to the list, and returns it as a unicoded, TitleCased plone vocabulary.
+    Note that despite the example below not being sorted, this function does
+    indeed sort the returned list.
     
     Args:
-        None.
+        contentType(str): Name of the content type
+        vocabularyVar(list)
     
     Returns:
-        List: [u'foo', u'bar', u'eggs', u'parrot']
+        List: ['old school 1', 'old school 2', 'old school 3']
     
     Example:
-        >>>school_vocab()
-        [u'foo', u'bar', u'eggs', u'parrot']
+        >>>SCHOOL_LIST = ['school1', 'school2', 'school3']
+        >>>school_vocab(AddNewSchools, SCHOOL_LIST)
+        [u'School 1', u'School 2', u'School 3', u'New School From ContentType']
     """
     catalog = api.portal.get_tool('portal_catalog')
-    query = catalog.searchResults(**{'portal_type': 'AddDepartment'})
+    query = catalog.searchResults(**{'portal_type': contentType})
     results = [item['title'] for item in query]
 
     if results:
-        return SimpleVocabulary.fromValues(sorted(DEPARTMENTS.extend(results)))
-    return SimpleVocabulary.fromValues(sorted(DEPARTMENTS))
+        return SimpleVocabulary.fromValues(
+            map(unicode.title, sorted(vocabularyVar.extend(results)))
+        )
+    return SimpleVocabulary.fromValues(
+        map(unicode.title, sorted(vocabularyVar))
+    )
+
+GET_ATTRIBUTES = get_vocabulary('AddAttribute', COURSE_ATTRIBUTES)
+GET_COMPONENTS = get_vocabulary('AddComponent', COURSE_COMPONENTS)
+GET_DEPARTMENTS = get_vocabulary('AddDepartment', DEPARTMENTS)
+GET_RANK = get_vocabulary('AddTitleRank', FACULTY_RANKS)
+
+"""
+    COURSE_ATTRIBUTES,
+    COURSE_COMPONENTS,
+    DEPARTMENTS,
+    DEPARTMENT_SUBJECTS,
+    FACULTY,
+    SCHOOLS,
+"""
+
+
+# @ram.cache(__course_component_cachekey)
+# def get_components():
+#     """Returns the course components.
+
+#     Course components are cached according to 
+
+#     Args:
+#         None.
+    
+#     Returns:
+#         list: [u'foo', u'bar', u'spam']
+
+#     Example:
+#         >>>get_components()
+#         [u'a', u'very', u'long', u'list']
+#     """
+#     catalog = api.portal.get_tool('portal_catalog')
+#     getComponents = catalog.searchResults(**{'portal_type': 'AddComponent'})
+#     components = [item['courseComponent'] for item in getComponents]
+
+#     if components:
+#         return SimpleVocabulary.fromValues(sorted(COURSE_COMPONENTS.extend(components)))
+#     return SimpleVocabulary.fromValues(sorted(COURSE_COMPONENTS))
+
+# @ram.cache(__department_cachekey)
+# def get_schools():
+#     """Provides list/vocabulary of Academic Schools.
+
+#     Args:
+#         None.
+    
+#     Returns:
+#         list: [u'foo', u'bar', u'spam']
+
+#     Example:
+#         >>>get_schools()
+#         [u'Arts and Sciences', u'Business and Information Systems', u'Health Sciences']
+#     """
+#     catalog = api.portal.get_tool('portal_catalog')
+#     getSchools = catalog.searchResults(**{'portal_type': 'AddSchool'})
+#     schools = [item['title'] for item in getSchools]
+
+#     if schools:
+#         return SimpleVocabulary.fromValues(sorted(SCHOOLS.extend(schools)))
+#     return SimpleVocabulary.fromValues(sorted(SCHOOLS))
+
+
+# @ram.cache(lambda *args: time() // 86400)
+# def course_attributes():
+#     """Returns course attributes.
+
+#     Args:
+#         None.
+    
+#     Returns:
+#         list: [u'foo', u'bar', u'spam']
+
+#     Example:
+#         >>>course_attributes()
+#         [u'a', u'very', u'long', u'list']
+#     """
+#     catalog = api.portal.get_tool('portal_catalog')
+#     getAttributes = catalog.searchResults(**{'portal_type': 'AddAttribute'})
+#     attributes = [item['title'] for item in getAttributes]
+
+#     if attributes:
+#         return SimpleVocabulary.fromValues(sorted(COURSE_ATTRIBUTES.extend(attributes)))
+#     return SimpleVocabulary.fromValues(sorted(COURSE_ATTRIBUTES))
+
+# # Delete this possibly
+# def get_departments():
+#     """Returns list as Plone vocabulary.
+    
+#     Args:
+#         None.
+    
+#     Returns:
+#         List: [u'foo', u'bar', u'eggs', u'parrot']
+    
+#     Example:
+#         >>>school_vocab()
+#         [u'foo', u'bar', u'eggs', u'parrot']
+#     """
+#     catalog = api.portal.get_tool('portal_catalog')
+#     query = catalog.searchResults(**{'portal_type': 'AddDepartment'})
+#     results = [item['title'] for item in query]
+
+#     if results:
+#         return SimpleVocabulary.fromValues(
+#             map(unicode.title, sorted(DEPARTMENTS.extend(results)))
+#         )
+#     return SimpleVocabulary.fromValues(sorted(DEPARTMENTS))
+
+
+# def get_ranks():
+#     """Returns faculty ranks list as Plone vocabulary.
+    
+#     Args:
+#         None.
+    
+#     Returns:
+#         List: [u'foo', u'bar', u'eggs', u'parrot']
+    
+#     Example:
+#         >>>school_vocab()
+#         [u'foo', u'bar', u'eggs', u'parrot']
+#     """
+#     catalog = api.portal.get_tool('portal_catalog')
+#     query = catalog.searchResults(**{'portal_type': 'AddDepartment'})
+#     results = [item['title'] for item in query]
+
+#     if results:
+#         return SimpleVocabulary.fromValues(sorted(DEPARTMENTS.extend(results)))
+#     return SimpleVocabulary.fromValues(sorted(DEPARTMENTS))
 
 
 
@@ -158,9 +232,13 @@ class GetFaculty(object):
             ]
 
         if not results:
-            return SimpleVocabulary.fromValues(sorted(map(unicode, vocabulary)))
+            return SimpleVocabulary.fromValues(
+                sorted(map(unicode, vocabulary.title()))
+            )
         else:
-            return SimpleVocabulary.fromValues(sorted(map(unicode, vocabulary.extend(results))))
+            return SimpleVocabulary.fromValues(
+                sorted(map(unicode, vocabulary.extend(results).title()))
+            )
 
 
 
@@ -191,6 +269,5 @@ class CourseSubjectVocab(object):
     @ram.cache(lambda *args: time() // 86400)
     def __call__(self, context, vocabulary):
         vocabulary = [courses[context] for courses in DEPARTMENT_SUBJECTS][0]
-        return SimpleVocabulary.fromValues(sorted(vocabulary))
-
+        return SimpleVocabulary.fromValues(sorted(unicode(vocabulary.title())))
 
