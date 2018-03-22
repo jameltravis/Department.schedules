@@ -43,7 +43,7 @@ setup(
         'setuptools',
         'z3c.jbot',
         'plone.app.dexterity',
-        'plone.app.registry'
+        'plone.app.registry',
         'plone.autoform',
         'plone.directives.form',
         'plone.namedfile',

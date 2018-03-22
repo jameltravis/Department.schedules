@@ -30,8 +30,7 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">Department.schedules.schemas.add_faculty.IAddAttribute</property>
-
+  <property name="schema">Department.schedules.schemas.add_attribute.IAddAttribute</property>
   <!-- Enabled behaviors -->
   <property name="behaviors">
     <element value="plone.app.content.interfaces.INameFromTitle" />

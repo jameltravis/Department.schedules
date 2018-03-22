@@ -215,9 +215,7 @@ class GetFaculty(object):
     
     @ram.cache(lambda *args: time() // 86400)
     def __call__(self, context, vocabulary):
-        vocabulary = [
-            item['name'] for item in FACULTYif item['department'] == context
-        ]
+        vocabulary = [item['name'] for item in FACULTY if item['department'] == context]
         catalog = api.portal.get_tool('portal_catalog')
         findFaculty = catalog.searchResults(**{'portal_type': 'AddFaculty'})
         results = [

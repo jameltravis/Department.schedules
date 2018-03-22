@@ -8,10 +8,10 @@
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Add New Department to Vocabularies</property>
+      name="title">Add New Title or Rank</property>
   <property
       i18n:translate=""
-      name="description">Form for adding new course Departments</property>
+      name="description">Form for adding new title/rank to Vocabularies</property>
 
   <property name="allow_discussion">True</property>
   <property name="factory">AddTitleRank</property>

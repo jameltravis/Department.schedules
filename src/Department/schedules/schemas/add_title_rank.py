@@ -10,8 +10,8 @@ class IAddTitleRank(model.Schema):
 
     title = schema.TextLine(
         title=(u'New Title'),
-        description=(u'Please write the name of the new title below'),
+        description=(
+            u'Please write the name of the new title below'
+            ),
         required=False,
-        max_length=255,
-        min_length=2
     )
