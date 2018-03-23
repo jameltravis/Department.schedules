@@ -11,10 +11,6 @@ from zope.schema.vocabulary import SimpleVocabulary
 from plone import api
 from plone.momoize import ram
 from Department.schedules import _
-from Department.schedules.resources.cachekeys import (
-    __course_component_cachekey,
-    __department_cachekey
-)
 from Department.schedules.resources.vocab_source import (
     COURSE_ATTRIBUTES,
     COURSE_COMPONENTS,
@@ -68,124 +64,6 @@ GET_DEPARTMENTS = get_vocabulary('AddDepartment', DEPARTMENTS)
 GET_RANKS = get_vocabulary('AddTitleRank', FACULTY_RANKS)
 GET_SCHOOLS = get_vocabulary('AddSchool', SCHOOLS)
 
-# @ram.cache(__course_component_cachekey)
-# def get_components():
-#     """Returns the course components.
-
-#     Course components are cached according to 
-
-#     Args:
-#         None.
-    
-#     Returns:
-#         list: [u'foo', u'bar', u'spam']
-
-#     Example:
-#         >>>get_components()
-#         [u'a', u'very', u'long', u'list']
-#     """
-#     catalog = api.portal.get_tool('portal_catalog')
-#     getComponents = catalog.searchResults(**{'portal_type': 'AddComponent'})
-#     components = [item['courseComponent'] for item in getComponents]
-
-#     if components:
-#         return SimpleVocabulary.fromValues(sorted(COURSE_COMPONENTS.extend(components)))
-#     return SimpleVocabulary.fromValues(sorted(COURSE_COMPONENTS))
-
-# @ram.cache(__department_cachekey)
-# def get_schools():
-#     """Provides list/vocabulary of Academic Schools.
-
-#     Args:
-#         None.
-    
-#     Returns:
-#         list: [u'foo', u'bar', u'spam']
-
-#     Example:
-#         >>>get_schools()
-#         [u'Arts and Sciences', u'Business and Information Systems', u'Health Sciences']
-#     """
-#     catalog = api.portal.get_tool('portal_catalog')
-#     getSchools = catalog.searchResults(**{'portal_type': 'AddSchool'})
-#     schools = [item['title'] for item in getSchools]
-
-#     if schools:
-#         return SimpleVocabulary.fromValues(sorted(SCHOOLS.extend(schools)))
-#     return SimpleVocabulary.fromValues(sorted(SCHOOLS))
-
-
-# @ram.cache(lambda *args: time() // 86400)
-# def course_attributes():
-#     """Returns course attributes.
-
-#     Args:
-#         None.
-    
-#     Returns:
-#         list: [u'foo', u'bar', u'spam']
-
-#     Example:
-#         >>>course_attributes()
-#         [u'a', u'very', u'long', u'list']
-#     """
-#     catalog = api.portal.get_tool('portal_catalog')
-#     getAttributes = catalog.searchResults(**{'portal_type': 'AddAttribute'})
-#     attributes = [item['title'] for item in getAttributes]
-
-#     if attributes:
-#         return SimpleVocabulary.fromValues(sorted(COURSE_ATTRIBUTES.extend(attributes)))
-#     return SimpleVocabulary.fromValues(sorted(COURSE_ATTRIBUTES))
-
-# # Delete this possibly
-# def get_departments():
-#     """Returns list as Plone vocabulary.
-    
-#     Args:
-#         None.
-    
-#     Returns:
-#         List: [u'foo', u'bar', u'eggs', u'parrot']
-    
-#     Example:
-#         >>>school_vocab()
-#         [u'foo', u'bar', u'eggs', u'parrot']
-#     """
-#     catalog = api.portal.get_tool('portal_catalog')
-#     query = catalog.searchResults(**{'portal_type': 'AddDepartment'})
-#     results = [item['title'] for item in query]
-
-#     if results:
-#         return SimpleVocabulary.fromValues(
-#             map(unicode.title, sorted(DEPARTMENTS.extend(results)))
-#         )
-#     return SimpleVocabulary.fromValues(sorted(DEPARTMENTS))
-
-
-# def get_ranks():
-#     """Returns faculty ranks list as Plone vocabulary.
-    
-#     Args:
-#         None.
-    
-#     Returns:
-#         List: [u'foo', u'bar', u'eggs', u'parrot']
-    
-#     Example:
-#         >>>school_vocab()
-#         [u'foo', u'bar', u'eggs', u'parrot']
-#     """
-#     catalog = api.portal.get_tool('portal_catalog')
-#     query = catalog.searchResults(**{'portal_type': 'AddDepartment'})
-#     results = [item['title'] for item in query]
-
-#     if results:
-#         return SimpleVocabulary.fromValues(sorted(DEPARTMENTS.extend(results)))
-#     return SimpleVocabulary.fromValues(sorted(DEPARTMENTS))
-
-
-
-# Class based vocabularies below
 
 class GetFaculty(object):
     """Source for schema.Choice fields.
