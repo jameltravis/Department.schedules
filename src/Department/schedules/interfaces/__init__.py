@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Module where all models, interfaces, events and exceptions live.
 
-Every package used in the models are imported here so Plone can find them.
+Every package used in the schema classes are imported here.
+This is the only way Plone is able to find them.
 """
 
 from datetime import time
@@ -18,7 +19,6 @@ from collective.z3cform.datagridfield import DictRow
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 
-from Department.schedules.models.schemas import WEEKDAY_SCHEMA, WEEKEND_SCHEMA
 from Department.schedules.resources.vocabulary import (
     GetFaculty,
     CourseSubjectVocab,
@@ -37,6 +37,19 @@ from Department.schedules.resources.vocab_source import (
     WEEK_DAYS,
     WEEKEND,
 )
+from Department.schedules.interfaces.add_attribute import IAddAttribute
+from Department.schedules.interfaces.add_component import IAddComponent
+from Department.schedules.interfaces.add_course import IAddCourse
+from Department.schedules.interfaces.add_department import IAddDepartment
+from Department.schedules.interfaces.add_faculty import IAddFaculty
+from Department.schedules.interfaces.add_school import IAddSchool
+from Department.schedules.interfaces.add_title_rank import IAddTitleRank
+from Department.schedules.interfaces.datagrid_schemas import (
+    ICourses,
+    WEEKDAY_SCHEMA,
+    WEEKEND_SCHEMA
+) 
+from Department.schedules.interfaces.schedule import ISchedule
 
 
 class IDepartmentSchedulesLayer(IDefaultBrowserLayer):

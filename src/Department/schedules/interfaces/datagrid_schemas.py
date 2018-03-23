@@ -6,11 +6,11 @@ from zope import schema
 from plone.autoform import model, directives
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from Department.schedules.resources.vocabulary import (
-    GetFaculty,
     CourseSubjectVocab,
-    GET_DEPARTMENTS,
+    GetFaculty,
     GET_ATTRIBUTES,
     GET_COMPONENTS,
+    GET_DEPARTMENTS,
     GET_RANKS,
     GET_SCHOOLS
 )
@@ -18,8 +18,8 @@ from Department.schedules.resources.vocab_source import (
     DAYS,
     HOURS,
     MINUTES,
-    TIME_OF_DAY,
     SEMESTERS,
+    TIME_OF_DAY,
     WEEK_DAYS,
     WEEKEND,
 )
@@ -154,7 +154,6 @@ WEEKDAY_SCHEMA.courseDays = schema.List(
 
 # Schema that feeds Weekend CourseGrid
 WEEKEND_SCHEMA = ICourses('Morning', 'Weekend')
-
 WEEKEND_SCHEMA.courseDays = schema.List(
     title=(u'Days'),
     value_type=schema.Choice(
@@ -162,47 +161,3 @@ WEEKEND_SCHEMA.courseDays = schema.List(
         default=(u'Select One')
     )
 )
-
-
-class IAddFaculty(model.Schema):
-    """Adds new faculty to the portal.
-    """
-
-    title = schema.TextLine(
-        title=(u"New Faculty Member's Name"),
-        required=True
-    )
-
-    department =  schema.Choice(
-        title=(u'Department'),
-        required=True,
-        source=GET_DEPARTMENTS,
-    )
-
-    facultyName = schema.TextLine(
-        title=(u'Faculty Name'),
-        description=(u'Please add the first and last name of the faculty member'),
-        required=True,
-    )
-
-    titleRank = schema.Choice(
-        title=(u'Please select your title'),
-        required=True,
-        source=GET_RANKS,
-    )
-
-    tenure = schema.Choice(
-        title=(u'Do you currently hold tenure?'),
-        required=True,
-        values=[
-            u'Select One',
-            u'Yes',
-            u'No'
-        ],
-    )
-
-    school = schema.Choice(
-        title=(u'Select your Academic School?'),
-        required=True,
-        source=GET_SCHOOLS,
-    )

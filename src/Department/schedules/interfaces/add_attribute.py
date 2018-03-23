@@ -8,14 +8,7 @@ from Department.schedules import _
 class IAddAttribute(model.Schema):
     """Adds new attributes"""
 
-    title = schema.Choice(
-        title=(u'Human readable title'),
-        description=(u'Ex: Request a Smartroom'),
+    title = schema.TextLine(
+        title=(u'Attribute name:'),
         required=True
     )
-
-    courseAttribute = schema.TextLine(
-        title=(u'CUNYFirst Attribute Name'),
-        required=True
-    )
-

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Module for Zope Schema models used for Department.schedules"""
 
+from Department.schedules import _
 from zope import schema
 from plone.supermodel import model
-from Department.schedules import _
 from Department.schedules.resources.vocabulary import CourseSubjectVocab
 
 
@@ -18,6 +18,7 @@ class IAddCourse(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
+        required=True
         source=CourseSubjectVocab,
     )
 

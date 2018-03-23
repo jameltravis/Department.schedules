@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """Module for adding new titles/ranks to existing vocabularies."""
 
+from Department.schedules import _
 from zope import schema
 from plone.supermodel import model
-from Department.schedules import _
+
+
 
 class IAddTitleRank(model.Schema):
     """Adds New titles to vocabularies."""

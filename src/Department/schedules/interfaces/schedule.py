@@ -2,18 +2,17 @@
 """Module used for adding new courses"""
 
 # Model/Schema Interface
+from Department.schedules import _
 from zope import schema
 from zope.interface import implements
 from plone.directives import form
 from plone.supermodel import model
 from collective.z3cform.datagridfield import DictRow
 from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
-from Department.schedules import _
-from Department.schedules.models.schemas import WEEKDAY_SCHEMA, WEEKEND_SCHEMA
-
-# Make the model/schema Persistent
-# from persistent import Persistent
-# from zope.schema.fieldproperty import FieldProperty
+from Department.schedules.interfaces.datagrid_schemas import (
+    WEEKDAY_SCHEMA,
+    WEEKEND_SCHEMA
+)
 
 
 class ISchedule(model.schema):

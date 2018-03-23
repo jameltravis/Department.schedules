@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Module for Zope Schema models used for Department.schedules"""
 
+from Department.schedules import _
 from zope import schema
 from plone.autoform import model
-from Department.schedules import _
-from Department.schedules.resources.vocabulary import get_schools
+from Department.schedules.resources.vocabulary import GET_SCHOOLS
 
 
 class IAddDepartment(model.Schema):
@@ -19,6 +19,5 @@ class IAddDepartment(model.Schema):
     school = schema.Choice(
         title=(u'Course Number'),
         required=True,
-        source=get_schools,
-        default=(u'Select One')
+        source=GET_SCHOOLS
     )

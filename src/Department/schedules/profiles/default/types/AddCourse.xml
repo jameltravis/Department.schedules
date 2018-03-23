@@ -30,7 +30,7 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">Department.schedules.schemas.add_course.IAddCourse</property>
+  <property name="schema">Department.schedules.interfaces.add_course.IAddCourse</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
