@@ -1,32 +1,31 @@
 # -*- coding: utf-8 -*-
-"""Schemata used for datagrid fields."""
+"""Schema used for datagrid fields."""
 
+from Department.schedules import _
 from zope import schema
 from plone.autoform import model, directives
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
-from Department.schedules import _
 from Department.schedules.resources.vocabulary import (
     GetFaculty,
-    CourseSubjectVocab, 
-    GET_RANKS
+    CourseSubjectVocab,
+    GET_DEPARTMENTS,
+    GET_ATTRIBUTES,
+    GET_COMPONENTS,
+    GET_RANKS,
+    GET_SCHOOLS
 )
 from Department.schedules.resources.vocab_source import (
     DAYS,
     HOURS,
     MINUTES,
-    COURSE_ATTRIBUTES,
-    COURSE_COMPONENTS,
     TIME_OF_DAY,
     SEMESTERS,
     WEEK_DAYS,
     WEEKEND,
 )
 
-# The plan is to create a few datagrids:
-# for the Day Classes, Evening classes and Weekend classes
-
-# Create instances of ICourses to facilite that need, eliminating
-# fields like courseTime for something more generic
+# ICourses is used to create intances for Weekday and
+# weekend datagrids
 
 class ICourses(model.Schema):
     """Schema for main course datagrid."""
@@ -64,7 +63,7 @@ class ICourses(model.Schema):
     )
 
     # Days of the Week
-    directives.widget(classDays=checkboxes)
+    directives.widget(courseDays=checkboxes)
     courseDays = schema.List(
         title=(u'Days'),
         required=False,
@@ -112,21 +111,21 @@ class ICourses(model.Schema):
 # time field end
 
 
-    directives.widget(classDays=checkboxes)
+    directives.widget(component=checkboxes)
     component = schema.List(
         title=(u'Course Component'),
         required=False,
         value_type=schema.Choice(
-            values=COURSE_COMPONENTS,
+            values=GET_COMPONENTS,
         )
     )
 
-    directives.widget(classDays=checkboxes)
+    directives.widget(attributes=checkboxes)
     attributes = schema.List(
         title=(u'attributes'),
         required=False,
         value_type=schema.Choice(
-            values=COURSE_ATTRIBUTES,
+            values=GET_ATTRIBUTES,
             default=(u'None')
         )
     )
@@ -142,9 +141,9 @@ class ICourses(model.Schema):
         self.weekend = weekend
 
 
+# Schema that feeds Weekday CourseGrid
 WEEKDAY_SCHEMA = ICourses('Morning', 'Weekday')
 
-# Do more of these
 WEEKDAY_SCHEMA.courseDays = schema.List(
     title=(u'Days'),
     value_type=schema.Choice(
@@ -153,6 +152,7 @@ WEEKDAY_SCHEMA.courseDays = schema.List(
     )
 )
 
+# Schema that feeds Weekend CourseGrid
 WEEKEND_SCHEMA = ICourses('Morning', 'Weekend')
 
 WEEKEND_SCHEMA.courseDays = schema.List(
@@ -176,7 +176,7 @@ class IAddFaculty(model.Schema):
     department =  schema.Choice(
         title=(u'Department'),
         required=True,
-        source=[],
+        source=GET_DEPARTMENTS,
     )
 
     facultyName = schema.TextLine(
@@ -188,7 +188,7 @@ class IAddFaculty(model.Schema):
     titleRank = schema.Choice(
         title=(u'Please select your title'),
         required=True,
-        source=[],
+        source=GET_RANKS,
     )
 
     tenure = schema.Choice(
@@ -204,6 +204,5 @@ class IAddFaculty(model.Schema):
     school = schema.Choice(
         title=(u'Select your Academic School?'),
         required=True,
-        source=[],
+        source=GET_SCHOOLS,
     )
-
