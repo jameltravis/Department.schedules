@@ -11,7 +11,7 @@
       name="title">Main Course Schedule</property>
   <property
       i18n:translate=""
-      name="description"></property>
+      name="description">Main Course Datagrid</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Schedule</property>
