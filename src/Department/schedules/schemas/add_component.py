@@ -2,19 +2,14 @@
 """Module for adding Components."""
 
 from zope import schema
-from plone.autoform import model
+from plone.supermodel import model
 from Department.schedules import _
 
 class IAddComponent(model.Schema):
-    """Adds new attributes"""
+    """Adds new attributes."""
 
-    title = schema.Choice(
-        title=(u'Human readable title'),
+    title = schema.TextLine(
+        title=(u'New Component:'),
         description=(u'Ex: Request a Smartroom'),
-        required=True
-    )
-
-    courseComponent = schema.TextLine(
-        title=(u'CUNYFirst Attribute Name'),
         required=True
     )

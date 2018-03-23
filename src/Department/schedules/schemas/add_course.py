@@ -2,11 +2,9 @@
 """Module for Zope Schema models used for Department.schedules"""
 
 from zope import schema
-from plone import api
-from plone.autoform import model, directives
-from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
+from plone.supermodel import model
 from Department.schedules import _
-from Department.schedules.resources.vocabulary import GetFaculty
+from Department.schedules.resources.vocabulary import CourseSubjectVocab
 
 
 class IAddCourse(model.Schema):
@@ -20,7 +18,7 @@ class IAddCourse(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
-        values=['A value'],
+        source=CourseSubjectVocab,
     )
 
     courseNumber = schema.TextLine(

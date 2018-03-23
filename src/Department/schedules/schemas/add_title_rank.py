@@ -12,6 +12,6 @@ class IAddTitleRank(model.Schema):
         title=(u'New Title'),
         description=(
             u'Please write the name of the new title below'
-            ),
+        ),
         required=False,
     )
