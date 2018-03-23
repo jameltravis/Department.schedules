@@ -7,8 +7,9 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from Department.schedules import _
 from Department.schedules.resources.vocabulary import (
     GetFaculty,
-    CourseSubjectVocab
-    )
+    CourseSubjectVocab, 
+    GET_RANKS
+)
 from Department.schedules.resources.vocab_source import (
     DAYS,
     HOURS,

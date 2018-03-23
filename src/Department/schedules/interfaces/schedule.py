@@ -12,8 +12,8 @@ from Department.schedules import _
 from Department.schedules.models.schemas import WEEKDAY_SCHEMA, WEEKEND_SCHEMA
 
 # Make the model/schema Persistent
-from persistent import Persistent
-from zope.schema.fieldproperty import FieldProperty
+# from persistent import Persistent
+# from zope.schema.fieldproperty import FieldProperty
 
 
 class ISchedule(model.schema):
@@ -56,15 +56,3 @@ class ISchedule(model.schema):
         ),
         required=True,
     )
-
-
-class Schedule(Persistent):
-    """Store contents from the schedule."""
-
-    implements(ISchedule)
-
-    title = FieldProperty(ISchedule['title'])
-    dayCourses = FieldProperty(ISchedule['dayCourses'])
-    eveningCourses = FieldProperty(ISchedule['EveningCourses'])
-    weekendCourses = FieldProperty(ISchedule['weekendCourses'])
-
