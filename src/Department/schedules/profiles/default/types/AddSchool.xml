@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <object
-    i18n:domain="Department.schedules.schemas"
+    i18n:domain="Department.schedulescd "
     meta_type="Dexterity FTI"
     name="AddSchool"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
