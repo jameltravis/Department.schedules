@@ -3,7 +3,8 @@
 
 from Department.schedules import _
 from zope import schema
-from plone.autoform import model, directives
+from plone.autoform import directives
+from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from Department.schedules.resources.vocabulary import (
     CourseSubjectVocab,
@@ -15,7 +16,6 @@ from Department.schedules.resources.vocabulary import (
     GET_SCHOOLS
 )
 from Department.schedules.resources.vocab_source import (
-    DAYS,
     HOURS,
     MINUTES,
     SEMESTERS,
@@ -68,7 +68,7 @@ class ICourses(model.Schema):
         title=(u'Days'),
         required=False,
         value_type=schema.Choice(
-            values=DAYS
+            values=[u'DAYS', u'More days']
         )
     )
 
@@ -136,6 +136,9 @@ class ICourses(model.Schema):
         source=GetFaculty,
     )
 
+    # Lets re-use this. Lets instantiate this class
+    # and add some information to help us know
+    # what each instance is for.
     def __init__(self, timeOfDay, weekend):
         self.timeOfDay = timeOfDay
         self.weekend = weekend
@@ -143,7 +146,6 @@ class ICourses(model.Schema):
 
 # Schema that feeds Weekday CourseGrid
 WEEKDAY_SCHEMA = ICourses('Morning', 'Weekday')
-
 WEEKDAY_SCHEMA.courseDays = schema.List(
     title=(u'Days'),
     value_type=schema.Choice(

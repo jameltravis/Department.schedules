@@ -3,7 +3,7 @@
 
 from Department.schedules import _
 from zope import schema
-from plone.autoform import model
+from plone.supermodel import model
 from Department.schedules.resources.vocabulary import GET_SCHOOLS
 
 

@@ -18,7 +18,7 @@ class IAddCourse(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
-        required=True
+        required=True,
         source=CourseSubjectVocab,
     )
 

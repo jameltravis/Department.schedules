@@ -2,7 +2,7 @@
 """Module for adding attributes."""
 
 from zope import schema
-from plone.autoform import model
+from plone.supermodel import model
 from Department.schedules import _
 
 class IAddAttribute(model.Schema):

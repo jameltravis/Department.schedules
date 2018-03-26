@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Initial lists used to generate vocabularies"""
+"""Initial lists used to generate vocabularies."""
 
 from Department.schedules import _
 
@@ -14,7 +14,97 @@ DETAILED_FACULTY = [
         'Full-Time': u"No"
     }
 ]
-FACULTY = [item['facultyName'] for item in DETAILED_FACULTY]
+
+FACULTY = [
+    {
+        'behavior': [
+            u"Apkarian, Jacob",
+            u"Ashton, William",
+            u"Austin, Susan",
+            u"Berwid, Olga",
+            u"Daniels, Ron",
+            u"Davies, Kristin",
+            u"Dietz, Joshua",
+            u"Duncan, Robert",
+            u"Elbulok-Charcape, Milushka",
+            u"Elfers-Wygand, Patricia",
+            u"Ellis, Tracey",
+            u"Erlbaum, William",
+            u"Giosan, Cezar",
+            u"Gregory, Michele",
+            u"Hamad, Mohammad",
+            u"Hansen, Ian",
+            u"Harper, Robin",
+            u"Higgins, Kathryn",
+            u"Hughes, Korey",
+            u"Jenkins, Sharmayne",
+            u"Levey, Tania",
+            u"Majerovitz, Deborah",
+            u"Mokrue, Kathariya",
+            u"Ostholm, Shirley",
+            u"Ranis, Peter",
+            u"Sharpe, Michael",
+            u"Swoboda, Debra",
+            u"Villegas, Francisco",
+            u"Zhang, Xiaodan"
+        ],
+        'biology': [
+            u"Adams, Cheryl",
+            u"Alter, Elizabeth",
+            u"Arsov, Ivica",
+            u"Beaton, Laura",
+            u"Bradbury-Boyd, Louis",
+            u"Casey, John",
+            u"Criss, Andrew",
+            u"Emtage, Lesley",
+            u"Hua, Shao-Ying",
+            u"Levinger, Louis",
+            u"Lewis, Leslie",
+            u"MacNeil, Margaret",
+            u"McNeil, Gerard",
+            u"Schlein, Jack",
+        ],
+        'chemistry':[
+            u"Chakravarti, Deb",
+            u"Chang, Emmanuel",
+            u"Desamero, Ruel",
+            u"Fay, Francois",
+            u"Fearnley, Stephen",
+            u"Foster, Catherine",
+            u"Johnson, Lawrence",
+            u"Lee, Jong-Ill",
+            u"Musumeci, Daniele",
+            u"Profit, Adam",
+            u"Richards, Lynne",
+            u"Robie, Daniel",
+            u"Small, Yolanda"
+        ],
+        'physics': [
+            u"Borenstein, Samuel",
+            u"Dhar, Ratan",
+            u"Khandaker, Nazrul",
+            u"Lynch, Kevin",
+            u"Paglione, Timothy",
+            u"Popp, James",
+            u"Roberts-Semple, Dawn",
+            u"Schleifer, Stanley",
+            u"Wolosin, Dora"
+        ],
+        'English': ["NAME"],
+        'history': ["NAME"],
+        'math': ["NAME"],
+        'fine_arts': ["NAME"],
+        'world_languages': ["NAME"],
+        'accounting_finance': ["NAME"],
+        'business_economics': ["NAME"],
+        'physical_education': ["NAME"],
+        'health_professions': ["NAME"],
+        'nursing': ["NAME"],
+        'occupational_therapy': ["NAME"],
+        'social_work': ["NAME"],
+        'teacher_ed': ["NAME"],
+    }
+]
 
 
 # Department Course Subjects
@@ -30,7 +120,7 @@ DEPARTMENT_SUBJECTS = [
         'physics': [u"PHY", u"EHS", u"GEOL"],
         'English': [u"ENG", u"WRIT", u"JOUR"],
         'history': [u"ANTH", u"BLST", u"HIST", u"CLDV", u"PHIL"],
-        'math': [u"MATH", "CS"],
+        'math': [u"MATH", u"CS"],
         'fine_arts': [u"AC", u"FA", u"CT", u"SPCH", u"MUS", u"TA"],
         'world_languages': [
             u"FREN",
@@ -44,7 +134,7 @@ DEPARTMENT_SUBJECTS = [
             u"PRST",
             u"AAS",
             u"WLIT"
-            ],
+        ],
         'accounting_finance': [u"ACC", u"FINC"],
         'business_economics': [u"ECON", u"BUS", u"MKT"],
         'physical_education': [u"GERO", u"HE", u"PH", u"PH"],
@@ -116,7 +206,7 @@ COURSE_COMPONENTS = [
 
 TIME_OF_DAY = [u'AM', u'PM']
 
-SEMESTER = [u'Winter', u'Spring', u'Summer', u'Fall']
+SEMESTERS = [u'Winter', u'Spring', u'Summer', u'Fall']
 
 FACULTY_RANKS = [
     u'Assistant Professor',

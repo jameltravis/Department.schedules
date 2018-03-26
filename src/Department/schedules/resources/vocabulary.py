@@ -9,7 +9,7 @@ from zope.interface import implements
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from plone import api
-from plone.momoize import ram
+from plone.memoize import ram
 from Department.schedules import _
 from Department.schedules.resources.vocab_source import (
     COURSE_ATTRIBUTES,
@@ -48,6 +48,7 @@ def get_vocabulary(contentType, vocabularyVar):
     catalog = api.portal.get_tool('portal_catalog')
     query = catalog.searchResults(**{'portal_type': contentType})
     results = [item['title'] for item in query]
+
 
     if results:
         return SimpleVocabulary.fromValues(
@@ -96,10 +97,7 @@ class GetFaculty(object):
         vocabulary = [item['name'] for item in FACULTY if item['department'] == context]
         catalog = api.portal.get_tool('portal_catalog')
         findFaculty = catalog.searchResults(**{'portal_type': 'AddFaculty'})
-        results = [
-            item['title'] for item in findFaculty
-            if item['facultyName'] not in vocabulary
-            ]
+        results = [item['title'] for item in findFaculty if item['facultyName'] not in vocabulary]
 
         if not results:
             return SimpleVocabulary.fromValues(

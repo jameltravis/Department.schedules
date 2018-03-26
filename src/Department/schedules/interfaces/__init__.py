@@ -11,7 +11,7 @@ from zope import schema
 from zope.interface import Interface, implements
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
-from plone.autoform import model, directives
+from plone.autoform import directives
 from plone.directives import form
 from plone.supermodel import model
 
@@ -29,7 +29,6 @@ from Department.schedules.resources.vocabulary import (
     GET_SCHOOLS
 )
 from Department.schedules.resources.vocab_source import (
-    DAYS,
     HOURS,
     MINUTES,
     TIME_OF_DAY,
@@ -37,18 +36,18 @@ from Department.schedules.resources.vocab_source import (
     WEEK_DAYS,
     WEEKEND,
 )
+from Department.schedules.interfaces.add_faculty import IAddFaculty
 from Department.schedules.interfaces.add_attribute import IAddAttribute
 from Department.schedules.interfaces.add_component import IAddComponent
 from Department.schedules.interfaces.add_course import IAddCourse
 from Department.schedules.interfaces.add_department import IAddDepartment
-from Department.schedules.interfaces.add_faculty import IAddFaculty
 from Department.schedules.interfaces.add_school import IAddSchool
 from Department.schedules.interfaces.add_title_rank import IAddTitleRank
 from Department.schedules.interfaces.datagrid_schemas import (
     ICourses,
     WEEKDAY_SCHEMA,
     WEEKEND_SCHEMA
-) 
+)
 from Department.schedules.interfaces.schedule import ISchedule
 
 
