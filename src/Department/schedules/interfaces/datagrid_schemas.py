@@ -32,7 +32,6 @@ class ICourses(model.Schema):
 
     title = schema.Choice(
         title=(u"What semester is this for?"),
-        default=(u'Select One'),
         values=SEMESTERS,
     )
 
@@ -87,7 +86,7 @@ class ICourses(model.Schema):
     )
 
     startTimeOfDay = schema.Choice(
-        title='',
+        title=u' ',
         required=True,
         values=TIME_OF_DAY
     )
@@ -99,13 +98,13 @@ class ICourses(model.Schema):
     )
 
     minutesEnd = schema.Choice(
-        title='',
+        title=u' ',
         required=True,
         values=MINUTES,
     )
 
     endTimeOfDay = schema.Choice(
-        title='',
+        title=u' ',
         values=TIME_OF_DAY
     )
 # time field end
