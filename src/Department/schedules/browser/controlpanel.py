@@ -15,6 +15,8 @@ from zope.interface import Interface
 
 
 class ICSVocubulary(Interface):
+    """Creates fields that will create vocabularies.
+    """
 
     courseAttributes = schema.Tuple(
         title=u'York College Course Components',
@@ -31,7 +33,7 @@ class ICSVocubulary(Interface):
     courseComponents = schema.Tuple(
         title=u'York College Course Attributes',
         default=(
-            u'None'
+            u'None',
             u'Clinical',
             u'Experimental',
             u'Field Studies',
@@ -59,15 +61,68 @@ class ICSVocubulary(Interface):
 
     newCourseSubject = schema.Tuple(
         title=u'Add new course subject',
-        description=u'Add'
+        description=u'Add new course subject to course vocabulary',
+        default=False,
+        missing_value=None,
+        value_type=schema.TextLine(),
+    )
+
+    newDepartment = schema.Tuple(
+        title=u'New department',
+        description=u'Add a new department to department vocabulary',
+        default=(
+            u"Behavioral Sciences",
+            u"Biology",
+            u"Chemistry",
+            u"Earth and Physical Sciences",
+            u"English",
+            u"History, Philosophy, and Anthropology",
+            u"Mathematics and Computer Science",
+            u"Performing and Fine Arts",
+            u"World Languages, Literature, and Humanities",
+            u"Accounting and Finance",
+            u"Business and Economics",
+            u"Health and Physical Education",
+            u"Health Professions",
+            u"Nursing",
+            u"Occupational Therapy",
+            u"Social Work",
+            u"Teacher Education"
+        ),
+        missing_value=None,
+        value_type=schema.TextLine(),
+    )
+
+    newSchool = schema.Tuple(
+        title=u'New Academic School',
+        description=u'Add new academic school to vocabulary',
+        default=(
+            u'Arts and Sciences',
+            u'Business and Information Systems',
+            u'Health Sciences and Professional Programs'
+        ),
+        missing_value=None,
+        value_type=schema.TextLine(),
+    )
+
+    newTitle = schema.Tuple(
+        title=u'New Title/Rank',
+        description=u'Add new faculty title',
+        default=(
+            u'Assistant Professor',
+            u'Associate Professor',
+            u'Professor'
+        ),
+        missing_value=None,
+        value_type=schema.TextLine(),
     )
 
 
-class CScheduleControlPanelForm(RegistryEditForm):
+class CSControlPanelForm(RegistryEditForm):
     schema = ICSVocubulary
     schema_prefix = "scheduling"
     label = u'Course Scheduling Settings'
 
 
-CSchedulingView = layout.wrap_form(
+CSPanelView = layout.wrap_form(
     CScheduleControlPanelForm, ControlPanelFormWrapper)
