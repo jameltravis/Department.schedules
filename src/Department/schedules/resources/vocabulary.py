@@ -24,7 +24,7 @@ from Department.schedules.resources.vocab_source import (
 # Vocabularies below
 
 # Make sure that each content type is taken from the 'title' field
-@ram.cache(lambda *args: time() // 3600)
+# @ram.cache(lambda *args: time() // 3600)
 def get_vocabulary(contentType, vocabularyVar):
     """Returns list as Plone vocabulary.
 
@@ -49,14 +49,15 @@ def get_vocabulary(contentType, vocabularyVar):
     query = catalog.searchResults(**{'portal_type': contentType})
     results = [item['title'] for item in query]
 
+    if not query:
+        return SimpleVocabulary.fromValues(
+            map(unicode.title, sorted(vocabularyVar))
+        )
 
-    if results:
+    if query:
         return SimpleVocabulary.fromValues(
             map(unicode.title, sorted(vocabularyVar.extend(results)))
         )
-    return SimpleVocabulary.fromValues(
-        map(unicode.title, sorted(vocabularyVar))
-    )
 
 
 GET_ATTRIBUTES = get_vocabulary('AddAttribute', COURSE_ATTRIBUTES)

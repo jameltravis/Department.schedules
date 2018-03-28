@@ -18,4 +18,12 @@
       directory="static"
       />
 
+  <!-- Templates and stuffs -->
+  <browser:page
+    name="scheduling-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".controlpanel.CSchedulingView"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>
