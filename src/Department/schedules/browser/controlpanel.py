@@ -125,4 +125,4 @@ class CSControlPanelForm(RegistryEditForm):
 
 
 CSPanelView = layout.wrap_form(
-    CScheduleControlPanelForm, ControlPanelFormWrapper)
+    CSControlPanelForm, ControlPanelFormWrapper)
