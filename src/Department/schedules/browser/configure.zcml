@@ -22,7 +22,7 @@
   <browser:page
     name="scheduling-controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    class=".controlpanel.CSchedulingView"
+    class=".controlpanel.CSPanelView"
     permission="cmf.ManagePortal"
     />
 

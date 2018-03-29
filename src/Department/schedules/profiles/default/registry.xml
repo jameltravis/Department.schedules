@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <registry>
-    <records interface="Department.schedules.browser.controlpanel.ICourseScheduleControlPanel"
-        prefix="scheduling" />
+    <records 
+        interface="Department.schedules.browser.controlpanel.ICSVocubulary"
+        prefix="york.scheduling" 
+        />
 </registry>

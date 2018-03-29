@@ -36,7 +36,7 @@ class IAddFaculty(model.Schema):
     titleRank = schema.Choice(
         title=(u'Please select your title'),
         required=True,
-        source=GET_RANKS,
+        source="Department.schedules.vocabularies.Rank",
     )
 
     tenure = schema.Choice(
