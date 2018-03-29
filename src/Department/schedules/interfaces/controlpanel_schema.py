@@ -57,7 +57,6 @@ class ICSVocubulary(Interface):
     newCourseSubject = schema.Tuple(
         title=u'Add new course subject',
         description=u'Add new course subject to course vocabulary',
-        default=False,
         missing_value=None,
         value_type=schema.TextLine(),
     )

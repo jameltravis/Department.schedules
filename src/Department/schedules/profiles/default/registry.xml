@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <registry>
     <records 
-        interface="Department.schedules.browser.controlpanel.ICSVocubulary"
+        interface="Department.schedules.interfaces.controlpanel_schema.ICSVocubulary"
         prefix="york.scheduling" 
         />
 </registry>

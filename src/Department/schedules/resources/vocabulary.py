@@ -51,12 +51,12 @@ def get_vocabulary(contentType, vocabularyVar):
 
     if not query:
         return SimpleVocabulary.fromValues(
-            map(unicode.title, sorted(vocabularyVar))
+            map(unicode, sorted(vocabularyVar).title())
         )
 
     if query:
         return SimpleVocabulary.fromValues(
-            map(unicode.title, sorted(vocabularyVar.extend(results)))
+            map(unicode, sorted(vocabularyVar.extend(results).title()))
         )
 
 
@@ -102,11 +102,11 @@ class GetFaculty(object):
 
         if not results:
             return SimpleVocabulary.fromValues(
-                sorted(map(unicode, vocabulary.title()))
+                sorted(map(unicode, vocabulary))
             )
         else:
             return SimpleVocabulary.fromValues(
-                sorted(map(unicode, vocabulary.extend(results).title()))
+                sorted(map(unicode, vocabulary.extend(results)))
             )
 
 

@@ -6,7 +6,6 @@ from plone.supermodel import model
 from Department.schedules import _
 from Department.schedules.resources.vocabulary import (
     GET_DEPARTMENTS,
-    GET_RANKS,
     GET_SCHOOLS
 )
 
@@ -22,22 +21,22 @@ class IAddFaculty(model.Schema):
         required=True
     )
 
-    department =  schema.Choice(
-        title=(u'Department'),
-        required=True,
-        source=GET_DEPARTMENTS,
-    )
+    # department =  schema.Choice(
+    #     title=(u'Department'),
+    #     required=True,
+    #     source=GET_DEPARTMENTS,
+    # )
 
     emplID = schema.TextLine(
         title=(u'CUNYFirst Empl ID'),
         required=False,
     )
 
-    titleRank = schema.Choice(
-        title=(u'Please select your title'),
-        required=True,
-        source="Department.schedules.vocabularies.Rank",
-    )
+    # titleRank = schema.Choice(
+    #     title=(u'Please select your title'),
+    #     required=True,
+    #     vocabulary="Department.schedules.vocabularies.Rank",
+    # )
 
     tenure = schema.Choice(
         title=(u'Do you currently hold tenure?'),
@@ -49,11 +48,11 @@ class IAddFaculty(model.Schema):
         ],
     )
 
-    school = schema.Choice(
-        title=(u'Select your Academic School'),
-        required=True,
-        source=GET_SCHOOLS,
-    )
+    # school = schema.Choice(
+    #     title=(u'Select your Academic School'),
+    #     required=True,
+    #     source=GET_SCHOOLS,
+    # )
 
     teachingHours = schema.Int(
         title=(u'Annual teaching hours'),
