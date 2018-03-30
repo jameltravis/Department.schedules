@@ -3,26 +3,26 @@
 
 from Department.schedules import _
 from zope import schema
-from plone.autoform import directives
+# from plone.autoform import directives
 from plone.supermodel import model
-from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
-from Department.schedules.resources.vocabulary import (
-    CourseSubjectVocab,
-    GetFaculty,
-    GET_ATTRIBUTES,
-    GET_COMPONENTS,
-    GET_DEPARTMENTS,
-    GET_RANKS,
-    GET_SCHOOLS
-)
-from Department.schedules.resources.vocab_source import (
-    HOURS,
-    MINUTES,
-    SEMESTERS,
-    TIME_OF_DAY,
-    WEEK_DAYS,
-    WEEKEND,
-)
+# from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
+# from Department.schedules.resources.vocabulary import (
+#     CourseSubjectVocab,
+#     GetFaculty,
+#     GET_ATTRIBUTES,
+#     GET_COMPONENTS,
+#     GET_DEPARTMENTS,
+#     GET_RANKS,
+#     GET_SCHOOLS
+# )
+# from Department.schedules.resources.vocab_source import (
+#     HOURS,
+#     MINUTES,
+#     SEMESTERS,
+#     TIME_OF_DAY,
+#     WEEK_DAYS,
+#     WEEKEND,
+# )
 
 # ICourses is used to create intances for Weekday and
 # weekend datagrids
@@ -32,17 +32,16 @@ class ICourses(model.Schema):
 
     title = schema.Choice(
         title=(u"What semester is this for?"),
-        values=SEMESTERS,
+        values=[u'SEMESTERS', u'BLAHBLAH'],
     )
 
     subject = schema.Choice(
         title=(u'Course Subject'),
-        source=CourseSubjectVocab,
+        values=[u'TEST',u'CourseSubjectVocab'],
     )
 
     courseNumber = schema.TextLine(
         title=(u'Course Number'),
-        default=101,
     )
 
     courseSection = schema.TextLine(
@@ -53,7 +52,6 @@ class ICourses(model.Schema):
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
         max=500,
-        default=50
     )
 
     waitList = schema.Int(
@@ -62,69 +60,45 @@ class ICourses(model.Schema):
     )
 
     # Days of the Week
-    directives.widget(courseDays=checkboxes)
+    # directives.widget(courseDays=checkboxes)
     courseDays = schema.List(
         title=(u'Days'),
         required=False,
         value_type=schema.Choice(
-            values=[u'DAYS', u'More days']
-        )
+            values=[u'DAYS', u'More days', u'even more days']
+        ),
     )
 
     # Time field start
     # Create if statement 
-    hourStart = schema.Choice(
+    timeStart = schema.Choice(
         title=(u'Time Start'),
         required=True,
-        values=HOURS,
+        values=[u'HOURS', u'LKLAM', u'KJBKJNAK'],
     )
 
-    minuteStart = schema.Choice(
-        title='',
-        required=True,
-        values=MINUTES,
-    )
-
-    startTimeOfDay = schema.Choice(
-        title=u' ',
-        required=True,
-        values=TIME_OF_DAY
-    )
-
-    hoursEnd = schema.Choice(
+    timeEnd = schema.Choice(
         title=(u'Time End'),
         required=True,
-        values=HOURS,
+        values=[u'MINUTES', u'LKNALSND'],
     )
 
-    minutesEnd = schema.Choice(
-        title=u' ',
-        required=True,
-        values=MINUTES,
-    )
 
-    endTimeOfDay = schema.Choice(
-        title=u' ',
-        values=TIME_OF_DAY
-    )
-# time field end
-
-
-    directives.widget(component=checkboxes)
+    # directives.widget(component=checkboxes)
     component = schema.List(
         title=(u'Course Component'),
         required=False,
         value_type=schema.Choice(
-            values=GET_COMPONENTS,
-        )
+            values=[u'GET_COMPONENTS', u'BKNLAKNS', u'KJASKJAD'],
+        ),
     )
 
-    directives.widget(attributes=checkboxes)
+    # directives.widget(attributes=checkboxes)
     attributes = schema.List(
         title=(u'attributes'),
         required=False,
         value_type=schema.Choice(
-            values=GET_ATTRIBUTES,
+            values=[u'GET_ATTRIBUTES', u'ASNLAKND', u'None'],
             default=(u'None')
         )
     )
@@ -132,33 +106,35 @@ class ICourses(model.Schema):
     instructor = schema.Choice(
         title=(u'Course Instructor'),
         required=False,
-        source=GetFaculty,
+        values=[u'GetFaculty', u'BLASTERZ'],
     )
 
     # Lets re-use this. Lets instantiate this class
     # and add some information to help us know
     # what each instance is for.
-    def __init__(self, timeOfDay, weekend):
-        self.timeOfDay = timeOfDay
-        self.weekend = weekend
+    def __init__(self, name):
+        self.name = name
+
 
 
 # Schema that feeds Weekday CourseGrid
-WEEKDAY_SCHEMA = ICourses('Morning', 'Weekday')
+WEEKDAY_SCHEMA = ICourses('Weekday')
+
+# Schema that feeds Weekend CourseGrid
+WEEKEND_SCHEMA = ICourses('Weekend')
+
 WEEKDAY_SCHEMA.courseDays = schema.List(
     title=(u'Days'),
     value_type=schema.Choice(
-        values=WEEK_DAYS,
+        values=[u'WEEK_DAYS', u'Select One'],
         default=(u'Select One')
-    )
+    ),
 )
 
-# Schema that feeds Weekend CourseGrid
-WEEKEND_SCHEMA = ICourses('Morning', 'Weekend')
 WEEKEND_SCHEMA.courseDays = schema.List(
     title=(u'Days'),
     value_type=schema.Choice(
-        values=WEEKEND,
+        values=[u'WEEKEND', u'Select One'],
         default=(u'Select One')
-    )
+    ),
 )

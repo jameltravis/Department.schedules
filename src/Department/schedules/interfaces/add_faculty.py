@@ -4,10 +4,10 @@
 from zope import schema
 from plone.supermodel import model
 from Department.schedules import _
-from Department.schedules.resources.vocabulary import (
-    GET_DEPARTMENTS,
-    GET_SCHOOLS
-)
+# from Department.schedules.resources.vocabulary import (
+#     GET_DEPARTMENTS,
+#     GET_SCHOOLS
+# )
 
 
 # Need a list of release time variables
@@ -32,11 +32,11 @@ class IAddFaculty(model.Schema):
         required=False,
     )
 
-    # titleRank = schema.Choice(
-    #     title=(u'Please select your title'),
-    #     required=True,
-    #     vocabulary="Department.schedules.vocabularies.Rank",
-    # )
+    titleRank = schema.Choice(
+        title=(u'Please select your title'),
+        required=True,
+        vocabulary="Department.schedules.vocabularies.Rank",
+    )
 
     tenure = schema.Choice(
         title=(u'Do you currently hold tenure?'),

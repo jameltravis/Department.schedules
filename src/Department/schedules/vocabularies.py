@@ -8,5 +8,5 @@ from zope.schema.interfaces import IVocabularyFactory
 
 @provider(IVocabularyFactory)
 def RankVocabularyFactory(context):
-    values = api.portal.get_registry_record('scheduling.newTitle')
+    values = api.portal.get_registry_record('york.scheduling.newTitle')
     return safe_simplevocabulary_from_values(values)

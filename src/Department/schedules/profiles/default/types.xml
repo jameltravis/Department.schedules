@@ -2,10 +2,6 @@
 <object name="portal_types" meta_type="Plone Types Tool">
   <object name="AddCourse" meta_type="Dexterity FTI"/>
   <object name="AddFaculty" meta_type="Dexterity FTI"/>
-  <object name="AddAttribute" meta_type="Dexterity FTI"/>
-  <object name="AddComponent" meta_type="Dexterity FTI"/>
   <object name="AddDepartment" meta_type="Dexterity FTI"/>
-  <object name="AddSchool" meta_type="Dexterity FTI"/>
-  <object name="AddTitleRank" meta_type="Dexterity FTI"/>
   <object name="Schedule" meta_type="Dexterity FTI"/>
 </object>

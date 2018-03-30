@@ -24,5 +24,4 @@ class CSControlPanelForm(RegistryEditForm):
     label = u'Course Scheduling Settings'
 
 
-CSPanelView = layout.wrap_form(
-    CSControlPanelForm, ControlPanelFormWrapper)
+CSPanelView = layout.wrap_form(CSControlPanelForm, ControlPanelFormWrapper)

@@ -58,6 +58,7 @@ class ICSVocubulary(Interface):
         title=u'Add new course subject',
         description=u'Add new course subject to course vocabulary',
         missing_value=None,
+        required=False,
         value_type=schema.TextLine(),
     )
 
@@ -84,6 +85,7 @@ class ICSVocubulary(Interface):
             u"Teacher Education"
         ),
         missing_value=None,
+        required=False,
         value_type=schema.TextLine(),
     )
 
@@ -96,6 +98,7 @@ class ICSVocubulary(Interface):
             u'Health Sciences and Professional Programs'
         ),
         missing_value=None,
+        required=False,
         value_type=schema.TextLine(),
     )
 
@@ -108,5 +111,6 @@ class ICSVocubulary(Interface):
             u'Professor'
         ),
         missing_value=None,
+        required=False,
         value_type=schema.TextLine(),
     )

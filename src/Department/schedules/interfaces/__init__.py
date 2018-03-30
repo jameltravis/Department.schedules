@@ -36,13 +36,13 @@ from Department.schedules.resources.vocab_source import (
     WEEK_DAYS,
     WEEKEND,
 )
-# from Department.schedules.interfaces.add_faculty import IAddFaculty
-from Department.schedules.interfaces.add_attribute import IAddAttribute
-from Department.schedules.interfaces.add_component import IAddComponent
-# from Department.schedules.interfaces.add_course import IAddCourse
-# from Department.schedules.interfaces.add_department import IAddDepartment
-from Department.schedules.interfaces.add_school import IAddSchool
-from Department.schedules.interfaces.add_title_rank import IAddTitleRank
+from Department.schedules.interfaces.add_faculty import IAddFaculty
+# from Department.schedules.interfaces.add_attribute import IAddAttribute
+# from Department.schedules.interfaces.add_component import IAddComponent
+from Department.schedules.interfaces.add_course import IAddCourse
+from Department.schedules.interfaces.add_department import IAddDepartment
+# from Department.schedules.interfaces.add_school import IAddSchool
+# from Department.schedules.interfaces.add_title_rank import IAddTitleRank
 # from Department.schedules.interfaces.datagrid_schemas import (
 #     ICourses,
 #     WEEKDAY_SCHEMA,
