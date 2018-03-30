@@ -6,9 +6,9 @@ from zope import schema
 from plone.autoform import directives
 # from plone.directives import form
 from plone.supermodel import model
-from collective.z3cform.widgets.token_input_widget import (
-    TokenInputFieldWidget as tagWidget
-)
+# from plone.formwidget.autocomplete import (
+#     AutocompleteFieldWidget as acompWidget
+# )
 # from plone.app.widget import AjaxSelectWidget as tagField
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 # from Department.schedules.resources.vocabulary import (
@@ -39,29 +39,34 @@ class ICourses(model.Schema):
     subject = schema.Choice(
         title=(u'Course Subject'),
         values=[u'TEST',u'CourseSubjectVocab'],
+        required=False,
     )
 
     courseNumber = schema.TextLine(
         title=(u'Course Number'),
+        required=False,
     )
 
     courseSection = schema.TextLine(
         title=(u'Section'),
+        required=False,
         default=(u"YY"),
     )
 
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
+        required=False,
         max=500,
     )
 
     waitList = schema.Int(
         title=(u'Wait List'),
+        required=False,
         max=500,
     )
 
     # Days of the Week
-    # form.widget(courseDays=tagWidget)
+    # directives.widget(courseDays=acompWidget)
     courseDays = schema.TextLine(
         title=(u'Days'),
         required=False,
@@ -82,13 +87,11 @@ class ICourses(model.Schema):
     )
 
 
-    directives.widget(component=checkboxes)
-    component = schema.List(
-        title=(u'Course Component'),
+    # directives.widget(component=acompWidget)
+    component = schema.TextLine(
+        title=(u'Course Component(s)'),
+        default=(u"GET_COMPONENTS, BKNLAKNS, KJASKJAD"),
         required=False,
-        value_type=schema.Choice(
-            values=[u'GET_COMPONENTS', u'BKNLAKNS', u'KJASKJAD'],
-        ),
     )
 
     directives.widget(attributes=checkboxes)
@@ -113,25 +116,30 @@ class EveningCourses(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
+        required=False,
         values=[u'TEST',u'CourseSubjectVocab'],
     )
 
     courseNumber = schema.TextLine(
         title=(u'Course Number'),
+        required=False,
     )
 
     courseSection = schema.TextLine(
         title=(u'Section'),
+        required=False,
         default=(u"YY"),
     )
 
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
+        required=False,
         max=500,
     )
 
     waitList = schema.Int(
         title=(u'Wait List'),
+        required=False,
         max=500,
     )
 
@@ -191,25 +199,30 @@ class WeekendCourses(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
+        required=False,
         values=[u'TEST',u'CourseSubjectVocab'],
     )
 
     courseNumber = schema.TextLine(
         title=(u'Course Number'),
+        required=False,
     )
 
     courseSection = schema.TextLine(
         title=(u'Section'),
+        required=False,
         default=(u"YY"),
     )
 
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
+        required=False,
         max=500,
     )
 
     waitList = schema.Int(
         title=(u'Wait List'),
+        required=False,
         max=500,
     )
 
@@ -261,12 +274,3 @@ class WeekendCourses(model.Schema):
         required=False,
         values=[u'GetFaculty', u'BLASTERZ'],
     )
-
-# # Schema that feeds Weekday CourseGrid
-# WEEKDAY_SCHEMA = ICourses('Weekday')
-
-# # Schema that feeds Weekend CourseGrid
-# WEEKEND_SCHEMA = ICourses('Weekend')
-
-
-

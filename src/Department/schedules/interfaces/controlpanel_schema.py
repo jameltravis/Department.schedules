@@ -54,6 +54,19 @@ class ICSVocubulary(Interface):
         value_type=schema.TextLine(),
     )
 
+    courseSections = schema.Tuple(
+        title=u'Available Course Sections',
+        description=u'Course sections to be used in vocabulary',
+        default=(
+            u'XX',
+            u'YY',
+            u'ZZ'
+        ),
+        missing_value=None,
+        required=False,
+        value_type=schema.TextLine(),
+    )
+
     newCourseSubject = schema.Tuple(
         title=u'Add new course subject',
         description=u'Add new course subject to course vocabulary',
@@ -114,3 +127,4 @@ class ICSVocubulary(Interface):
         required=False,
         value_type=schema.TextLine(),
     )
+

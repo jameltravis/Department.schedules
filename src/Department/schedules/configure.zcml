@@ -10,6 +10,8 @@
 
   <include package=".browser" />
 
+  <include package=".resources" />
+
 
   <genericsetup:registerProfile
       name="default"
@@ -35,7 +37,7 @@
       name="Department.schedules-hiddenprofiles" />
 
   <utility
-    name="Department.schedules.vocabularies.Rank"
+    name="Department.schedules.resources.vocabularies.Rank"
     component="Department.schedules.vocabularies.RankVocabularyFactory" />
 
 </configure>

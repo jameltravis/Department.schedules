@@ -16,9 +16,9 @@ from plone.directives import form
 from plone.supermodel import model
 
 from collective.z3cform.datagridfield import DictRow, DataGridFieldFactory
-from collective.z3cform.widgets.token_input_widget import (
-    TokenInputFieldWidget as tagWidget
-)
+# from collective.z3cform.widgets.token_input_widget import (
+#     TokenInputFieldWidget as tagWidget
+# )
 # from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 
