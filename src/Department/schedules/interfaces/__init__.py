@@ -15,8 +15,11 @@ from plone.autoform import directives
 from plone.directives import form
 from plone.supermodel import model
 
-from collective.z3cform.datagridfield import DictRow
-from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
+from collective.z3cform.datagridfield import DictRow, DataGridFieldFactory
+from collective.z3cform.widgets.token_input_widget import (
+    TokenInputFieldWidget as tagWidget
+)
+# from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 
 # from Department.schedules.resources.vocabulary import (
@@ -28,27 +31,27 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
     # GET_RANKS,
     # GET_SCHOOLS
 # )
-from Department.schedules.resources.vocab_source import (
-    HOURS,
-    MINUTES,
-    TIME_OF_DAY,
-    SEMESTERS,
-    WEEK_DAYS,
-    WEEKEND,
-)
+# from Department.schedules.resources.vocab_source import (
+#     HOURS,
+#     MINUTES,
+#     TIME_OF_DAY,
+#     SEMESTERS,
+#     WEEK_DAYS,
+#     WEEKEND,
+# )
 from Department.schedules.interfaces.add_faculty import IAddFaculty
-# from Department.schedules.interfaces.add_attribute import IAddAttribute
-# from Department.schedules.interfaces.add_component import IAddComponent
-from Department.schedules.interfaces.add_course import IAddCourse
-from Department.schedules.interfaces.add_department import IAddDepartment
-# from Department.schedules.interfaces.add_school import IAddSchool
-# from Department.schedules.interfaces.add_title_rank import IAddTitleRank
+# from Department.schedules.interfaces.add_course import IAddCourse
+# from Department.schedules.interfaces.add_department import IAddDepartment
+from Department.schedules.interfaces.datagrid_schemas import (
+    ICourses,
+    EveningCourses,
+    WeekendCourses
+)
 # from Department.schedules.interfaces.datagrid_schemas import (
-#     ICourses,
 #     WEEKDAY_SCHEMA,
 #     WEEKEND_SCHEMA
 # )
-# from Department.schedules.interfaces.schedule import ISchedule
+from Department.schedules.interfaces.new_schedule import ISchedule
 
 
 class IDepartmentSchedulesLayer(IDefaultBrowserLayer):
