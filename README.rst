@@ -68,7 +68,7 @@ Install Department.schedules by adding it to your buildout::
         Department.schedules
 
 
-and then running ``bin/buildout`` from your zinstanc or zeocluster directory 
+and then running ``bin/buildout`` from your zinstance or zeocluster directory 
 Note: if ``[sources]`` isn't included in your buildout, include it. Feel free to copy and paste
 the following code above the ``[buildout]`` header ::
     [sources]
