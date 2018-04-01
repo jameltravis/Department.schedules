@@ -28,7 +28,7 @@ Permissions / Workflow
 Todo list:
 --------
 
-- Need to create ``assert isinstance()`` to function args for pseudo type checking
+- Need to ``assert isinstance()`` to function args for pseudo type checking
 - Need to create vocabularies that are context specific, or filter results based on department the current logged in user belongs to
 - Style Datagrid fields so they look a little more pleasant
 - Create validators: Class time conflicts, day of week conflicts, limit on number of new classes offered
