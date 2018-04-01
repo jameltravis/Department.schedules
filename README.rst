@@ -16,10 +16,22 @@ Features
 - For Executives: Approve or deny requests to change the master schedules.
 - For IT Admins: Add or remove courses from course vocubularies.
 
-Examples
+Permissions / Workflow
+----------------------
+
+- Any logged in user -> View the schedules
+- Department level -> Edit the schedule, send to registrar (if same as previous year), send it to the Deans / Provost
+- Dean Level -> Edit schedule, send to department, send it to Provost
+- Provost level -> Edit schedule, send back to department, send it to Registrar
+- Registrar level -> view only(?), departments can change state
+
+Todo list:
 --------
 
-This add-on can be seen in action at the following sites:
+- Need to create ``assert isinstance()`` to function args for pseudo type checking
+- Need to create vocabularies that are context specific, or filter results based on department the current logged in user belongs to
+- Style Datagrid fields so they look a little more pleasant
+- Create validators: Class time conflicts, day of week conflicts, limit on number of new classes offered
 - Coming soon!
 
 
