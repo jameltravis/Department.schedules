@@ -4,22 +4,8 @@
 from Department.schedules import _
 from zope import schema
 from plone.autoform import directives
-# from plone.directives import form
 from plone.supermodel import model
-# from plone.formwidget.autocomplete import (
-#     AutocompleteFieldWidget as acompWidget
-# )
-# from plone.app.widget import AjaxSelectWidget as tagField
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
-# from Department.schedules.resources.vocabulary import (
-#     CourseSubjectVocab,
-#     GetFaculty,
-#     GET_ATTRIBUTES,
-#     GET_COMPONENTS,
-#     GET_DEPARTMENTS,
-#     GET_RANKS,
-#     GET_SCHOOLS
-# )
 # from Department.schedules.resources.vocab_source import (
 #     HOURS,
 #     MINUTES,
@@ -110,7 +96,7 @@ class ICourses(model.Schema):
         values=[u'GetFaculty', u'BLASTERZ'],
     )
 
-
+# Evening Course Schema
 class EveningCourses(model.Schema):
     """renders the fields for the evening class datagrid."""
 
