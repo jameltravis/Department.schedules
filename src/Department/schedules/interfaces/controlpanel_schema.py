@@ -25,25 +25,25 @@ class ICSVocubulary(Interface):
         value_type=schema.TextLine(),
     )
 
-    courseComponents = schema.Tuple(
-        title=u'York College Course Attributes',
-        default=(
-            u'None',
-            u'Clinical',
-            u'Experimental',
-            u'Field Studies',
-            u'Independent Study',
-            u'Internship',
-            u'Lab',
-            u'Lecture',
-            u'Recitation',
-            u'Seminar',
-            u'Writing Intensive'
-        ),
-        missing_value=None,
-        required=False,
-        value_type=schema.TextLine(),
-    )
+    # courseComponents = schema.Tuple(
+    #     title=u'York College Course Attributes',
+    #     default=(
+    #         u'None',
+    #         u'Clinical',
+    #         u'Experimental',
+    #         u'Field Studies',
+    #         u'Independent Study',
+    #         u'Internship',
+    #         u'Lab',
+    #         u'Lecture',
+    #         u'Recitation',
+    #         u'Seminar',
+    #         u'Writing Intensive'
+    #     ),
+    #     missing_value=None,
+    #     required=False,
+    #     value_type=schema.TextLine(),
+    # )
 
     newCourseNumber = schema.Tuple(
         title=u'Add a new course number',
@@ -54,18 +54,18 @@ class ICSVocubulary(Interface):
         value_type=schema.TextLine(),
     )
 
-    courseSections = schema.Tuple(
-        title=u'Available Course Sections',
-        description=u'Course sections to be used in vocabulary',
-        default=(
-            u'XX',
-            u'YY',
-            u'ZZ'
-        ),
-        missing_value=None,
-        required=False,
-        value_type=schema.TextLine(),
-    )
+    # courseSections = schema.Tuple(
+    #     title=u'Available Course Sections',
+    #     description=u'Course sections to be used in vocabulary',
+    #     default=(
+    #         u'XX',
+    #         u'YY',
+    #         u'ZZ'
+    #     ),
+    #     missing_value=None,
+    #     required=False,
+    #     value_type=schema.TextLine(),
+    # )
 
     newCourseSubject = schema.Tuple(
         title=u'Add new course subject',
