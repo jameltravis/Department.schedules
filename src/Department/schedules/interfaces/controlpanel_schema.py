@@ -46,8 +46,10 @@ class ICSVocubulary(Interface):
     )
 
     dayCourseTimes = schema.Tuple(
-        title=u'Add a new course number',
-        description=u'Add a new Course number to course vocabulary',
+        title=u'Times for day courses',
+        description=(
+            u'These values get used for '
+            u'the Course Scheduling drop-down menus'),
         default=(
             u'7:00 am',
             u'7:50 am',
@@ -175,3 +177,40 @@ class ICSVocubulary(Interface):
         value_type=schema.TextLine(),
     )
 
+    semesters = schema.Tuple(
+        title=u'Days of the week',
+        default=(
+            u'Winter',
+            u'Spring',
+            u'Summer',
+            u'Fall'
+        ),
+        missing_value=None,
+        required=False,
+        value_type=schema.TextLine(),
+    )
+
+    weekdayDays = schema.Tuple(
+        title=u'Days of the week',
+        default=(
+            u'Mon',
+            u'Tues',
+            u'Wed',
+            u'Thurs',
+            u'Fri'
+        ),
+        missing_value=None,
+        required=False,
+        value_type=schema.TextLine(),
+    )
+
+    weekendDays = schema.Tuple(
+        title=u'Days of the Weekend',
+        default=(
+            u'Sat',
+            u'Sun',
+        ),
+        missing_value=None,
+        required=False,
+        value_type=schema.TextLine(),
+    )
