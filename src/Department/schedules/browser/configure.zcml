@@ -25,5 +25,4 @@
     class=".controlpanel.CSPanelView"
     permission="cmf.ManagePortal"
     />
-
 </configure>

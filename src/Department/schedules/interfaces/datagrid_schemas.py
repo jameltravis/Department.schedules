@@ -6,6 +6,7 @@ from zope import schema
 from plone.autoform import directives
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
+from z3c.form import form
 # from Department.schedules.resources.vocab_source import (
 #     HOURS,
 #     MINUTES,
@@ -15,85 +16,11 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 #     WEEKEND,
 # )
 
-# ICourses is used to create intances for Weekday and
-# weekend datagrids
-
-# class MainTestGrid(model.schema):
-#     """Schema to end all schemas."""
-
-#     def __init__(self, title):
-#         """Init test datagrid.
-#         """
-#         self.title = title
-
-#         self.subject = schema.Choice(
-#             title=(u'Course Subject'),
-#             values=[u'TEST',u'CourseSubjectVocab'],
-#             required=False,
-#         )
-
-#         self.courseNumber = schema.TextLine(
-#             title=(u'Course Number'),
-#             required=False,
-#         )
-
-#         self.courseSection = schema.TextLine(
-#             title=(u'Section'),
-#             required=False,
-#         )
-
-#         self.enrollmentCapacity = schema.TextLine(
-#             title=(u'Enrollment Capacity'),
-#             required=False,
-#         )
-
-#         self.waitlist = schema.Int(
-#             title=(u'Wait List'),
-#             required=False,
-#             max=500,
-#         )
-
-#         self.courseDays = schema.TextLine(
-#             title(u'Days'),
-#             required=False,
-#             max=500,
-#         )
-
-#         self.timeStart = schema.Choice(
-#             title=(u'Days'),
-#             required=False,
-#             values=[u'Hours', u'mins', u'secs'],
-#         )
-
-#         self.timeEnd = schema.Choice(
-#             title=(u'Time End'),
-#             required=False,
-#             values=[u'Hours', u'mins', u'secs'],
-#         )
-
-#         self.component = schema.TextLine(
-#             title=(u'Course Component(s)'),
-#             default=(u"thing1, thing2, thing3"),
-#             required=False,
-#         )
-
-#         directives.widget(attributes=checkboxes)
-#         self.attributes = schema.List(
-#             title=(u'attributes'),
-#             required=False,
-#             value_type=schema.Choice(
-#                 values=[u'value1', u'value2', u'value3' u'None'],
-#                 default=(u'None')
-#             ),
-#         )
-
-#         self.instructor = schema.Choice(
-#             title=(u'Course instructor'),
-#             required=False,
-#             values=[u'instructor1', u'instructor2'],
-#         )
 
 
+# #################################################
+# WORKING MAIN DATAGRID
+# #############################################
 class ICourses(model.Schema):
     """Schema for main course datagrid."""
 
@@ -171,7 +98,18 @@ class ICourses(model.Schema):
         values=[u'GetFaculty', u'BLASTERZ'],
     )
 
+    def updateWidgets(self):
+        self.widgets['table'].allow_insert = True # Enable/Disable the insert button on the right
+        self.widgets['table'].allow_delete = True # Enable/Disable the delete button on the right
+        self.widgets['table'].auto_append = False  # Enable/Disable the auto-append feature
+        self.widgets['table'].allow_reorder = False  # Enable/Disable the re-order rows feature
+        super(EditForm, self).updateWidgets()
+
+
+
+# ###################################################
 # Evening Course Schema
+# ##########################
 class EveningCourses(model.Schema):
     """renders the fields for the evening class datagrid."""
 
@@ -254,6 +192,9 @@ class EveningCourses(model.Schema):
     )
 
 
+# ##################################
+# THIS IS THE CURRENT (04/05/2018)
+# WORKING SCHEMA FOR THE WEEKEND DATA GRID
 class WeekendCourses(model.Schema):
     """Renders fields for weekend datagrid field.
     """
@@ -335,3 +276,26 @@ class WeekendCourses(model.Schema):
         required=False,
         values=[u'GetFaculty', u'BLASTERZ'],
     )
+
+
+class TestSchemata(model.Schema):
+    """Test schema feild.
+    """
+
+    banger = schema.Choice(
+        required=False,
+        values=[u'choice1', u'choice2', u'None'],
+        default=u'None'
+    )
+
+# class MegaTestSchemata(model.Schema):
+#     """Yet another test schema."""
+
+#     form.widget(banger2=DataGridFieldFactory)
+#     banger2 = schema.List(
+#         title=(u'Please submit your requests for daytime courses'),
+#         value_type=DictRow(
+#             title=(u'testing'),
+#             schema=TestSchemata,
+#         ),
+#     )
