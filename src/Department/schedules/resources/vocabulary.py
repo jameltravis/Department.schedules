@@ -10,6 +10,7 @@ from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from plone import api
 from plone.memoize import ram
+from plone.app.vocabularies.terms import safe_simplevocabulary_from_values
 from Department.schedules import _
 from Department.schedules.resources.vocab_source import (
     COURSE_ATTRIBUTES,
@@ -20,6 +21,26 @@ from Department.schedules.resources.vocab_source import (
     FACULTY_RANKS,
     SCHOOLS,
 )
+
+# Demo of actual function for vocabulary
+def get_subjects(context):
+    """Provides dropdowns for the course subejcts.
+    
+    Searches the registry for course subjects then.
+    """
+    # get current user
+    current_user = api.user.get_current()
+    user_department = current_user.getProperty('department')
+    records = api.portal.get_registry_record('york.scheduling.courseSubjects')
+    spam = []
+
+    for items in records:
+        if user_department == items.startsWith(user_department):
+            spam.extend(items)
+    # next: split by ':' character
+    values = tuple([item.split(': ')[1] for item in spam])
+    return safe_simplevocabulary_from_values(values)
+
 
 # Vocabularies below
 
