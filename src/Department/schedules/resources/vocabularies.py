@@ -46,7 +46,7 @@ def subject_vocabulary_factory(context):
     
     # get rid of everything before semicolon
     values = tuple(
-        [item.split(': ')[1] for item in records 
+        [item.split(': ')[1].upper() for item in records 
         if user_dept.lower() in item.lower()]
     )
     return safe_simplevocabulary_from_values(values)
