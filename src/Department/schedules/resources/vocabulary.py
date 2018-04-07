@@ -22,22 +22,34 @@ from Department.schedules.resources.vocab_source import (
     SCHOOLS,
 )
 
-# Demo of actual function for vocabulary
+# Demo of subject_vocabulary_factory, see vocabularies.py
 def get_subjects(context):
     """Provides dropdowns for the course subejcts.
     
-    Searches the registry for course subjects then.
+    Searches the registry for course subjects then filters the results
+    based on the department the current logged in user belongs to. Once
+    the list is filtered, everything before ``': '`` is removed; thus
+    in order to return proper results, the admins MUST enter any new
+    subjects in the control panel like so: ``foo: bar`` .
+
+    TL;DR: this is the function that generates the Course Subject drop-down.
+
+    Args:
+        context(context): Plone handles this auto-magically.
+
+    Returns:
+        collection: (u'item1', u'item2', u'item3', u'etc')
     """
     # get current user
     current_user = api.user.get_current()
-    user_department = current_user.getProperty('department')
+    user_dept = current_user.getProperty('department')
     records = api.portal.get_registry_record('york.scheduling.courseSubjects')
     spam = []
+    # values = [item.split(': ')[1] for item in records if user_dept.lower() in item.lower()]
 
     for items in records:
-        if user_department == items.startsWith(user_department):
+        if user_dept.lower() in items.lower():
             spam.extend(items)
-    # next: split by ':' character
     values = tuple([item.split(': ')[1] for item in spam])
     return safe_simplevocabulary_from_values(values)
 
@@ -59,7 +71,7 @@ def get_vocabulary(contentType, vocabularyVar):
         vocabularyVar(list)
     
     Returns:
-        List: ['old school 1', 'old school 2', 'old school 3']
+        list: ['old school 1', 'old school 2', 'old school 3']
     
     Example:
         >>>SCHOOL_LIST = ['school1', 'school2', 'school3']
