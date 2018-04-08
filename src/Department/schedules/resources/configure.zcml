@@ -5,6 +5,14 @@
     i18n_domain="Department.schedules">
 
   <utility
-    name=".vocabularies.Rank"
-    component="Department.schedules.vocabularies.RankVocabularyFactory" />
+    name=".vocabularies.Faculty_Rank"
+    component=".vocabularies.rank_vocabulary_factory" />
+
+  <utility
+    name=".vocabularies.Course_Subjects"
+    component=".vocabularies.subject_vocabulary_factory" />
+
+  <utility
+    name=".vocabularies.Department_Faculty"
+    component=".vocabularies.faculty_vocabulary_factory" />
 </configure>

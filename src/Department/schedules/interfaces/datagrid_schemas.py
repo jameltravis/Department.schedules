@@ -98,12 +98,6 @@ class ICourses(model.Schema):
         values=[u'GetFaculty', u'BLASTERZ'],
     )
 
-    def updateWidgets(self):
-        self.widgets['table'].allow_insert = True # Enable/Disable the insert button on the right
-        self.widgets['table'].allow_delete = True # Enable/Disable the delete button on the right
-        self.widgets['table'].auto_append = False  # Enable/Disable the auto-append feature
-        self.widgets['table'].allow_reorder = False  # Enable/Disable the re-order rows feature
-        super(EditForm, self).updateWidgets()
 
 
 
@@ -193,8 +187,8 @@ class EveningCourses(model.Schema):
 
 
 # ##################################
-# THIS IS THE CURRENT (04/05/2018)
 # WORKING SCHEMA FOR THE WEEKEND DATA GRID
+####################################
 class WeekendCourses(model.Schema):
     """Renders fields for weekend datagrid field.
     """
@@ -276,26 +270,3 @@ class WeekendCourses(model.Schema):
         required=False,
         values=[u'GetFaculty', u'BLASTERZ'],
     )
-
-
-class TestSchemata(model.Schema):
-    """Test schema feild.
-    """
-
-    banger = schema.Choice(
-        required=False,
-        values=[u'choice1', u'choice2', u'None'],
-        default=u'None'
-    )
-
-# class MegaTestSchemata(model.Schema):
-#     """Yet another test schema."""
-
-#     form.widget(banger2=DataGridFieldFactory)
-#     banger2 = schema.List(
-#         title=(u'Please submit your requests for daytime courses'),
-#         value_type=DictRow(
-#             title=(u'testing'),
-#             schema=TestSchemata,
-#         ),
-#     )

@@ -7,6 +7,13 @@ For the purposes of keeping class names brief, CS == Course Scheduling.
 from Department.schedules import _
 from zope import schema
 from zope.interface import Interface
+from Department.schedules.resources.vocab_source import (
+    COURSE_ATTRIBUTES,
+    COURSE_COMPONENTS,
+    DAY_COURSE_TIMES,
+    DEPARTMENT_SUBJECTS,
+    NIGHT_COURSE_TIMES,
+    SCHOOLS)
 
 
 class ICSVocubulary(Interface):
@@ -14,32 +21,16 @@ class ICSVocubulary(Interface):
     """
 
     courseAttributes = schema.Tuple(
-        title=u'York College Course Components',
-        default=(
-            u'Add Smart Room',
-            u'Hybrid',
-            u'Fully Online',
-        ),
+        title=u'York College Course Attributes',
+        default=COURSE_ATTRIBUTES,
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),
     )
 
     courseComponents = schema.Tuple(
-        title=u'York College Course Attributes',
-        default=(
-            u'None',
-            u'Clinical',
-            u'Experimental',
-            u'Field Studies',
-            u'Independent Study',
-            u'Internship',
-            u'Lab',
-            u'Lecture',
-            u'Recitation',
-            u'Seminar',
-            u'Writing Intensive'
-        ),
+        title=u'York College Course Components',
+        default=COURSE_COMPONENTS,
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),
@@ -50,30 +41,15 @@ class ICSVocubulary(Interface):
         description=(
             u'These values get used for '
             u'the Course Scheduling drop-down menus'),
-        default=(
-            u'7:00 am',
-            u'7:50 am',
-            u'8:00 am',
-            u'8:50 am',
-            u'9:00 am',
-            u'9:50 am',
-            u'10:00 am',
-            u'10:50 am',
-            u'11:00 am',
-            u'11:50 am',
-            u'12:00 pm',
-            u'12:50 pm',
-            u'1:00 pm',
-            u'1:50 pm',
-            u'2:00 pm',
-            u'2:50 pm',
-            u'3:00 pm',
-            u'3:50 pm',
-            u'4:00 pm',
-            u'4:50 pm',
-            u'5:00 pm',
-            u'5:50 pm'
-        ),
+        default=DAY_COURSE_TIMES,
+        missing_value=None,
+        required=False,
+        value_type=schema.TextLine(),
+    )
+
+    courseSubjects = schema.Tuple(
+        title=u'York College Course Subjects',
+        default=DEPARTMENT_SUBJECTS,
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),
@@ -82,22 +58,7 @@ class ICSVocubulary(Interface):
     nightCourseTimes = schema.Tuple(
         title=u'Add a new course number',
         description=u'Add a new Course number to course vocabulary',
-        default=(
-            u'4:00 pm',
-            u'4:50 pm',
-            u'5:00 pm',
-            u'5:50 pm',
-            u'6:00 pm',
-            u'6:50 pm',
-            u'7:00 pm',
-            u'7:50 pm',
-            u'8:00 pm',
-            u'8:50 pm',
-            u'9:00 pm',
-            u'9:50 pm',
-            u'10:00 pm',
-            u'10:50 pm',
-        ),
+        default=NIGHT_COURSE_TIMES,
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),
@@ -111,14 +72,6 @@ class ICSVocubulary(Interface):
             u'YY',
             u'ZZ'
         ),
-        missing_value=None,
-        required=False,
-        value_type=schema.TextLine(),
-    )
-
-    newCourseSubject = schema.Tuple(
-        title=u'Add new course subject',
-        description=u'Add new course subject to course vocabulary',
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),
@@ -154,11 +107,7 @@ class ICSVocubulary(Interface):
     newSchool = schema.Tuple(
         title=u'New Academic School',
         description=u'Add new academic school to vocabulary',
-        default=(
-            u'Arts and Sciences',
-            u'Business and Information Systems',
-            u'Health Sciences and Professional Programs'
-        ),
+        default=SCHOOLS,
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),

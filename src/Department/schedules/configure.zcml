@@ -36,8 +36,4 @@
       factory=".setuphandlers.HiddenProfiles"
       name="Department.schedules-hiddenprofiles" />
 
-  <utility
-    name="Department.schedules.resources.vocabularies.Rank"
-    component="Department.schedules.vocabularies.RankVocabularyFactory" />
-
 </configure>
