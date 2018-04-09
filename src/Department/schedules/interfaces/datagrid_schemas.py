@@ -65,21 +65,23 @@ class ICourses(model.Schema):
     timeStart = schema.Choice(
         title=(u'Time Start'),
         required=False,
-        values=[u'HOURS', u'LKLAM', u'KJBKJNAK'],
+        vocabulary="Course.Scheduling.Night_Course_Times",
     )
 
     timeEnd = schema.Choice(
         title=(u'Time End'),
         required=False,
-        values=[u'MINUTES', u'LKNALSND'],
+        vocabulary="Course.Scheduling.Night_Course_Times",
     )
 
 
     # directives.widget(component=acompWidget)
-    component = schema.TextLine(
+    component = schema.List(
         title=(u'Course Component(s)'),
-        default=(u"GET_COMPONENTS, BKNLAKNS, KJASKJAD"),
         required=False,
+        value_type=schema.Choice(
+            vocabulary="Course.Scheduling.Course_Components"
+        )
     )
 
     directives.widget(attributes=checkboxes)
@@ -87,15 +89,14 @@ class ICourses(model.Schema):
         title=(u'attributes'),
         required=False,
         value_type=schema.Choice(
-            values=[u'GET_ATTRIBUTES', u'ASNLAKND', u'None'],
-            default=(u'None')
+            vocabulary="Course.Scheduling.Course_Attributes",
         ),
     )
 
     instructor = schema.Choice(
         title=(u'Course Instructor'),
         required=False,
-        values=[u'GetFaculty', u'BLASTERZ'],
+        vocabulary="Course.Scheduling.Department_Faculty",
     )
 
 
@@ -228,7 +229,7 @@ class WeekendCourses(model.Schema):
         title=(u'Days'),
         required=False,
         value_type=schema.Choice(
-            values=[u'DAYS', u'More days', u'even more days']
+            vocabulary="Course.Scheduling.Weekend"
         ),
     )
 

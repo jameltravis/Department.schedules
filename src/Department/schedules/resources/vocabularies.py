@@ -27,9 +27,16 @@ def component_vocabulary_factory(context):
 
 @provider(IVocabularyFactory)
 def day_course_times_vocabulary_factory(context):
-    """Gets course components.
+    """Gets day course times.
     """
     values = api.portal.get_registry_record('york.scheduling.dayCourseTimes')
+    return safe_vocab(values)
+
+@provider(IVocabularyFactory)
+def night_course_times_factory(context):
+    """Gets night course times.
+    """
+    values = api.portal.get_registry_record('york.scheduling.nightCourseTimes')
     return safe_vocab(values)
 
 
@@ -56,6 +63,23 @@ def rank_vocabulary_factory(context):
     """Gets faculty rank.
     """
     values = api.portal.get_registry_record('york.scheduling.newTitle')
+    return safe_vocab(values)
+
+
+# Get ranks from registry
+@provider(IVocabularyFactory)
+def weekday_vocabulary_factory(context):
+    """Gets days of week.
+    """
+    values = api.portal.get_registry_record('york.scheduling.weekdayDays')
+    return safe_vocab(values)
+
+# Get ranks from registry
+@provider(IVocabularyFactory)
+def weekend_vocabulary_factory(context):
+    """Gets days of week.
+    """
+    values = api.portal.get_registry_record('york.scheduling.weekendDays')
     return safe_vocab(values)
 
 

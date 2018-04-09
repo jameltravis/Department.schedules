@@ -28,11 +28,13 @@ Permissions / Workflow
 Todo list:
 --------
 
-- Need to ``assert isinstance()`` to function args for pseudo type checking
-- Need to create vocabularies that are context specific, or filter results based on department the current logged in user belongs to. Use ``startswith()`` in vocab definition.
+- Add named vocabulary items to datagrid fields
+- Write update / upgrade steps
 - Style Datagrid fields so they look a little more pleasant
 - Create validators: Class time conflicts, day of week conflicts, limit on number of new classes offered
-- Coming soon!
+- test faculty vocabulary, and decide if it needs to be cached or not.
+- if functions need caching, create new cache keys.
+- Create action (button) to write datagrid data to csv.
 
 
 Documentation

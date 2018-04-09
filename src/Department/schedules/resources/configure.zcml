@@ -14,8 +14,16 @@
     component=".vocabularies.subject_vocabulary_factory" />
 
   <utility
+    name="Course.Scheduling.Course_Components"
+    component=".vocabularies.component_vocabulary_factory" />
+
+  <utility
     name="Course.Scheduling.Day_Course_Times"
     component=".vocabularies.day_course_times_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Night_Course_Times"
+    component=".vocabularies.night_course_times_factory" />
 
   <utility
     name="Course.Scheduling.Department_Faculty"
@@ -24,4 +32,12 @@
   <utility
     name="Course.Scheduling.Faculty_Rank"
     component=".vocabularies.rank_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Weekdays"
+    component=".vocabularies.weekday_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Weekend"
+    component=".vocabularies.weekend_vocabulary_factory" />
 </configure>
