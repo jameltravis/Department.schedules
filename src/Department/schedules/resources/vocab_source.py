@@ -164,8 +164,7 @@ DEPARTMENT_SUBJECTS = (
         u"Teacher Education: EDUC",
 )
 
-DEPARTMENTS = [
-    {
+DEPARTMENTS = (
         u"Behavioral Sciences",
         u"Biology",
         u"Chemistry",
@@ -183,9 +182,9 @@ DEPARTMENTS = [
         u"Occupational Therapy",
         u"Social Work",
         u"Teacher Education",
-    }
-]
+)
 
+# I created this 
 FACULTY = [
     {
         'behavior': [

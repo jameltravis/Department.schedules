@@ -9,16 +9,57 @@ from zope.interface import provider
 from zope.schema.interfaces import IVocabularyFactory
 
 
+@provider(IVocabularyFactory)
+def attribute_vocabulary_factory(context):
+    """Gets course attributes.
+    """
+    values = api.portal.get_registry_record('york.scheduling.courseAttributes')
+    return safe_vocab(values)
+
+
+@provider(IVocabularyFactory)
+def component_vocabulary_factory(context):
+    """Gets course components.
+    """
+    values = api.portal.get_registry_record('york.scheduling.courseComponents')
+    return safe_vocab(values)
+
+
+@provider(IVocabularyFactory)
+def day_course_times_vocabulary_factory(context):
+    """Gets course components.
+    """
+    values = api.portal.get_registry_record('york.scheduling.dayCourseTimes')
+    return safe_vocab(values)
+
+
+# get faculty from portal, should work, needs real life tests
+# To Rafael: Here is where I try and get the faculty.
+@provider(IVocabularyFactory)
+def faculty_vocabulary_factory(context):
+    """insert good docstring here.
+    """
+    #TODO Add better docstring!
+    currentUser = api.user.get_current()
+    crntUserDept = currentUser.getProperty('department')
+    users = api.user.get_users()
+    values = tuple(
+        [user.upper() for user in users 
+        if user.getProperty('department').lower() == crntUserDept.lower()]
+    )
+    return safe_vocab(values)
 
 
 # Get ranks from registry
 @provider(IVocabularyFactory)
 def rank_vocabulary_factory(context):
+    """Gets faculty rank.
+    """
     values = api.portal.get_registry_record('york.scheduling.newTitle')
     return safe_vocab(values)
 
 
-# Get the course subjects from registry
+# should work, needs test
 @provider(IVocabularyFactory)
 def subject_vocabulary_factory(context):
     """Provides dropdowns for the course subejcts.
@@ -54,21 +95,3 @@ def subject_vocabulary_factory(context):
         if userDept.lower() in item.lower()]
     )
     return safe_vocab(values)
-
-
-# get faculty from portal
-@provider(IVocabularyFactory)
-def faculty_vocabulary_factory(context):
-    """insert good docstring here.
-    """
-    #TODO Add better docstring!
-    currentUser = api.user.get_current()
-    crntUserDept = currentUser.getProperty('department')
-    users = api.user.get_users()
-    values = tuple(
-        [user.upper() for user in users 
-        if user.getProperty('department').lower() == crntUserDept.lower()]
-    )
-    return safe_vocab(values)
-
-

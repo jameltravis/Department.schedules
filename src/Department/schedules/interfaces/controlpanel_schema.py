@@ -12,6 +12,7 @@ from Department.schedules.resources.vocab_source import (
     COURSE_COMPONENTS,
     DAY_COURSE_TIMES,
     DEPARTMENT_SUBJECTS,
+    DEPARTMENTS,
     NIGHT_COURSE_TIMES,
     SCHOOLS)
 
@@ -80,25 +81,7 @@ class ICSVocubulary(Interface):
     newDepartment = schema.Tuple(
         title=u'New department',
         description=u'Add a new department to department vocabulary',
-        default=(
-            u"Behavioral Sciences",
-            u"Biology",
-            u"Chemistry",
-            u"Earth and Physical Sciences",
-            u"English",
-            u"History, Philosophy, and Anthropology",
-            u"Mathematics and Computer Science",
-            u"Performing and Fine Arts",
-            u"World Languages, Literature, and Humanities",
-            u"Accounting and Finance",
-            u"Business and Economics",
-            u"Health and Physical Education",
-            u"Health Professions",
-            u"Nursing",
-            u"Occupational Therapy",
-            u"Social Work",
-            u"Teacher Education"
-        ),
+        default=DEPARTMENTS,
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),

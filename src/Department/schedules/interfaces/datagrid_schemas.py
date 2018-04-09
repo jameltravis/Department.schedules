@@ -26,7 +26,7 @@ class ICourses(model.Schema):
 
     subject = schema.Choice(
         title=(u'Course Subject'),
-        values=[u'TEST',u'CourseSubjectVocab'],
+        vocabulary=".vocabularies.Course_Subjects",
         required=False,
     )
 

@@ -4,15 +4,24 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="Department.schedules">
 
-  <utility
-    name=".vocabularies.Faculty_Rank"
-    component=".vocabularies.rank_vocabulary_factory" />
 
   <utility
-    name=".vocabularies.Course_Subjects"
+    name="Course.Scheduling.Course_Attributes"
+    component=".vocabularies.attribute_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Course_Subjects"
     component=".vocabularies.subject_vocabulary_factory" />
 
   <utility
-    name=".vocabularies.Department_Faculty"
+    name="Course.Scheduling.Day_Course_Times"
+    component=".vocabularies.day_course_times_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Department_Faculty"
     component=".vocabularies.faculty_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Faculty_Rank"
+    component=".vocabularies.rank_vocabulary_factory" />
 </configure>
