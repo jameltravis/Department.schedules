@@ -26,7 +26,7 @@ Permissions / Workflow
 - Registrar level -> view only(?), departments can change state
 
 Todo list:
---------
+----------
 
 - Add named vocabulary items to datagrid fields
 - Write update / upgrade steps
@@ -35,7 +35,13 @@ Todo list:
 - test faculty vocabulary, and decide if it needs to be cached or not.
 - if functions need caching, create new cache keys.
 - Create action (button) to write datagrid data to csv.
+- Fix workflows
 
+
+Recommendation:
+---------------
+
+- Add new user property for faculty: ``'workloadHours'`` . If this is done, the Faculty Workload report could be implemented as a view, using data from the datagrid fields.
 
 Documentation
 -------------
