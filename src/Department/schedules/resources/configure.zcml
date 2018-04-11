@@ -40,4 +40,8 @@
   <utility
     name="Course.Scheduling.Weekend"
     component=".vocabularies.weekend_vocabulary_factory" />
+
+  <utility
+    name="Course.Scheduling.Course_Sections"
+    component=".vocabularies.course_section_vocabulary_factory" />
 </configure>

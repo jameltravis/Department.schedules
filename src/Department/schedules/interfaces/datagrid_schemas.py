@@ -35,10 +35,11 @@ class ICourses(model.Schema):
         required=False,
     )
 
-    courseSection = schema.TextLine(
+    courseSection = schema.Choice(
         title=(u'Section'),
         required=False,
         default=(u"YY"),
+        vocbaulary="Course.Scheduling.Course_Sections"
     )
 
     enrollmentCapacity = schema.Int(

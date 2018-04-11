@@ -26,6 +26,14 @@ def component_vocabulary_factory(context):
 
 
 @provider(IVocabularyFactory)
+def course_section_vocabulary_factory(context):
+    """#TODO: Write a proper docstring.
+    Returns course sections.
+    """
+    values = api.portal.get_registry_record('york.scheduling.courseSections')
+    return safe_vocab(values)
+
+@provider(IVocabularyFactory)
 def day_course_times_vocabulary_factory(context):
     """Gets day course times.
     """

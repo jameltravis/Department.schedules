@@ -99,7 +99,7 @@ class ICSVocubulary(Interface):
     newFaculty = schema.Tuple(
         title=u'New Faculty Member',
         description=u'Add new faculty member',
-        default=(u'Coming soon!'),
+        default=(u'Coming', u'soon!'),
         missing_value=None,
         required=False,
         value_type=schema.TextLine(),
