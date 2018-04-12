@@ -82,7 +82,7 @@ def get_vocabulary(contentType, vocabularyVar):
     query = catalog.searchResults(**{'portal_type': contentType})
     results = [item['title'] for item in query]
 
-    if not query:
+    if query is None:
         return SimpleVocabulary.fromValues(
             map(unicode, sorted(vocabularyVar))
         )
@@ -133,7 +133,7 @@ class GetFaculty(object):
         findFaculty = catalog.searchResults(**{'portal_type': 'AddFaculty'})
         results = [item['title'] for item in findFaculty if item['facultyName'] not in vocabulary]
 
-        if not results:
+        if results is None:
             return SimpleVocabulary.fromValues(
                 sorted(map(unicode, vocabulary))
             )

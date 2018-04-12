@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Module containing vocabularies/collections used for drop down menues.
+
+#TODO: write proper docstrings. 
 """
 
 from plone import api
@@ -27,8 +29,7 @@ def component_vocabulary_factory(context):
 
 @provider(IVocabularyFactory)
 def course_section_vocabulary_factory(context):
-    """#TODO: Write a proper docstring.
-    Returns course sections.
+    """Returns course sections.
     """
     values = api.portal.get_registry_record('york.scheduling.courseSections')
     return safe_vocab(values)
