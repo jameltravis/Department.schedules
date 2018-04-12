@@ -41,6 +41,11 @@ class ICourses(model.Schema):
         vocabulary="Course.Scheduling.Course_Sections",
     )
 
+    courseCredits = schema.TextLine(
+        title=(u'Credits'),
+        required=True,
+    )
+
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
         required=False,
@@ -127,6 +132,11 @@ class EveningCourses(model.Schema):
         vocabulary="Course.Scheduling.Course_Sections",
     )
 
+    courseCredits = schema.TextLine(
+        title=(u'Credits'),
+        required=True,
+    )
+
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
         required=False,
@@ -153,13 +163,13 @@ class EveningCourses(model.Schema):
     timeStart = schema.Choice(
         title=(u'Time Start'),
         required=False,
-        vocabulary="Course.Scheduling.Night_Course_Times",
+        vocabulary="Course.Scheduling.Day_Course_Times",
     )
 
     timeEnd = schema.Choice(
         title=(u'Time End'),
         required=False,
-        vocabulary="Course.Scheduling.Night_Course_Times",
+        vocabulary="Course.Scheduling.Day_Course_Times",
     )
 
 
@@ -212,6 +222,11 @@ class WeekendCourses(model.Schema):
         vocabulary="Course.Scheduling.Course_Sections",
     )
 
+    courseCredits = schema.TextLine(
+        title=(u'Credits'),
+        required=True,
+    )
+
     enrollmentCapacity = schema.Int(
         title=(u'Enrollment Capacity'),
         required=False,
@@ -230,31 +245,31 @@ class WeekendCourses(model.Schema):
         title=(u'Days'),
         required=False,
         value_type=schema.Choice(
-            vocabulary="Course.Scheduling.Weekdays"
+            vocabulary="Course.Scheduling.Weekend"
         ),
     )
 
     # Time field start
     timeStart = schema.Choice(
         title=(u'Time Start'),
-        required=True,
-        values=[u'HOURS', u'LKLAM', u'KJBKJNAK'],
+        required=False,
+        vocabulary="Course.Scheduling.Day_Course_Times",
     )
 
     timeEnd = schema.Choice(
         title=(u'Time End'),
-        required=True,
-        values=[u'MINUTES', u'LKNALSND'],
+        required=False,
+        vocabulary="Course.Scheduling.Day_Course_Times",
     )
 
 
     directives.widget(component=checkboxes)
     component = schema.List(
-        title=(u'Course Component'),
+        title=(u'Course Component(s)'),
         required=False,
         value_type=schema.Choice(
-            values=[u'GET_COMPONENTS', u'BKNLAKNS', u'KJASKJAD'],
-        ),
+            vocabulary="Course.Scheduling.Course_Components"
+        )
     )
 
     directives.widget(attributes=checkboxes)
@@ -262,9 +277,8 @@ class WeekendCourses(model.Schema):
         title=(u'attributes'),
         required=False,
         value_type=schema.Choice(
-            values=[u'GET_ATTRIBUTES', u'ASNLAKND', u'None'],
-            default=(u'None')
-        )
+            vocabulary="Course.Scheduling.Course_Attributes",
+        ),
     )
 
     instructor = schema.Choice(
@@ -274,6 +288,9 @@ class WeekendCourses(model.Schema):
     )
 
 
+########################################
+# WEEKEND NIGHT DATAGRID
+#######################################
 class WeekendNightCourses(model.Schema):
     """Schema for night courses at the college.
     """
@@ -293,6 +310,11 @@ class WeekendNightCourses(model.Schema):
         title=(u'Section'),
         required=False,
         vocabulary="Course.Scheduling.Course_Sections",
+    )
+
+    courseCredits = schema.TextLine(
+        title=(u'Credits'),
+        required=True,
     )
 
     enrollmentCapacity = schema.Int(
