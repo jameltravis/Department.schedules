@@ -10,8 +10,8 @@ from collective.z3cform.datagridfield import DictRow, DataGridFieldFactory
 # from collective.z3cform.datagridfield.datagridfield import DataGridFieldFactory
 from Department.schedules.interfaces.datagrid_schemas import (
     ICourses,
-    EveningCourses,
-    WeekendCourses,
+# EveningCourses,
+# WeekendCourses,
 )
 # from Department.schedules.interfaces.datagrid_schemas import (
 #     ICourses,
@@ -45,22 +45,22 @@ class ISchedule(model.Schema):
         required=False,
     )
 
-    # Data grid for evening Course requests
-    form.widget(eveningCourses=DataGridFieldFactory)
-    eveningCourses = schema.List(
-        title=(u'Please submit your requests for daytime courses'),
-        value_type=DictRow(
-            title=(u'Courses'),
-            schema=EveningCourses
-        ),
-        required=False,
-    )
+    # # Data grid for evening Course requests
+    # form.widget(eveningCourses=DataGridFieldFactory)
+    # eveningCourses = schema.List(
+    #     title=(u'Please submit your requests for daytime courses'),
+    #     value_type=DictRow(
+    #         title=(u'Courses'),
+    #         schema=EveningCourses
+    #     ),
+    #     required=False,
+    # )
 
-    # Weekend Datagrid
-    form.widget(weekendCourses=DataGridFieldFactory)
-    weekendCourses = schema.List(
-        title=(u'Please submit your requests for weekend courses'),
-        value_type=DictRow(title=(u'Courses'), schema=WeekendCourses),
-        required=False,
-    )
+    # # Weekend Datagrid
+    # form.widget(weekendCourses=DataGridFieldFactory)
+    # weekendCourses = schema.List(
+    #     title=(u'Please submit your requests for weekend courses'),
+    #     value_type=DictRow(title=(u'Courses'), schema=WeekendCourses),
+    #     required=False,
+    # )
 

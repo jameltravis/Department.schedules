@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Module containing cache keys used in ```vocubulary.py``` or elsewhere.
+"""Module containing cache keys.
 
-There are more cache keys here than are currently in use. Based on the systems'
-performance, or how often new things are being added to the catalog,
-you may find it more beneficial to use these cache keys instead of
-some of the lambda functions used in the ```vocabulary.py``` .
+I was originally using these as a method to cache vocabulary items that
+were resoucee intensive. This was important, as users of
+collective.z3cform.datagridfields reported that vocabularies generated
+from a ``source`` would be called repeatedly. I didn't want to have
+Plone lagging balls, so I created the cache keys below. Since then,
+I have moved from ``source`` vocabularies to Named Vocabularies. These
+are here just in case you may ever need them.
+
+TL;DR: This is a resource just in case you need them. If you don't,
+feel free to delete this module. 
 """
 
 from plone import api

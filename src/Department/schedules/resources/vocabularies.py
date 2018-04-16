@@ -4,9 +4,11 @@
 #TODO: write proper docstrings. 
 """
 
+from time import time
 from plone import api
 from plone.app.vocabularies.terms import (
     safe_simplevocabulary_from_values as safe_vocab)
+from plone.memoize import ram
 from zope.interface import provider
 from zope.schema.interfaces import IVocabularyFactory
 
@@ -52,18 +54,37 @@ def night_course_times_factory(context):
 # get faculty from portal, should work, needs real life tests
 # To Rafael: Here is where I try and get the faculty.
 @provider(IVocabularyFactory)
+# @ram.cache(lambda *args: time() // 3600)
 def faculty_vocabulary_factory(context):
-    """insert good docstring here.
+    """Returns a list of faculty for drop downs.
+
+    This operation is fairly intensive, especially if you end up adding faculty
+    to the list (which you will). I added a caching decarator so that everytime
+    the datagrid fields try to call the vocabulary, it is getting the value from
+    the cached list.
+
     """
-    #TODO Add better docstring!
+    #TODO Add types
+
     currentUser = api.user.get_current()
     crntUserDept = currentUser.getProperty('department')
     users = api.user.get_users()
-    values = tuple(
-        [user.upper() for user in users 
-        if user.getProperty('department').lower() == crntUserDept.lower()]
-    )
-    return safe_vocab(values)
+    values = [
+        user.upper() for user in users 
+        if user.getProperty('department').lower() == crntUserDept.lower()
+    ]
+
+    # Get any added faculty from control panel
+    newFaculty = api.portal.get_registry_record('york.scheduling.newFaculty')
+    if not newFaculty or newFaculty is None:
+        return safe_vocab(values)
+    
+    panelValues = [
+        item.split(': ')[1].upper() for item in newFaculty 
+        if crntUserDept.lower() in item.lower()
+    ]
+    extendedValues = values.extend(panelValues)
+    return safe_vocab(extendedValues)
 
 
 # Get ranks from registry
