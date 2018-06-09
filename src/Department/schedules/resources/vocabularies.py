@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """Module containing vocabularies/collections used for drop down menues.
 
+Actual vocabulary names are located in:
+Department.schedules.locales.default.registry.xml
+
 #TODO: write proper docstrings. 
 """
 
