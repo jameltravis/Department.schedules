@@ -2,7 +2,7 @@
 """Module containing vocabularies/collections used for drop down menues.
 
 Actual vocabulary names are located in:
-Department.schedules.locales.default.registry.xml
+Department.schedules.resources.configure.zcml
 
 #TODO: write proper docstrings. 
 """
