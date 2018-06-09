@@ -6,7 +6,9 @@
 Department.schedules
 ==============================================================================
 
-A tool for proposing schedules. Note: Any changes made after 2018-06-08 will have been done blindly. Until Further notice, I refactoring blindly. Let the open source flow through you.
+A tool for proposing schedules. Note: Any changes made after 2018-06-08 will have been done blindly. Until Further notice, I don't have enough disk space for a VM with Plone. 
+
+Let the open source flow through you.
 
 Project status/phase: Development
 Completion: 40%
