@@ -7,15 +7,6 @@ from plone.autoform import directives
 from plone.supermodel import model
 from z3c.form.browser.checkbox import CheckBoxFieldWidget as checkboxes
 from z3c.form import form
-# from Department.schedules.resources.vocab_source import (
-#     HOURS,
-#     MINUTES,
-#     SEMESTERS,
-#     TIME_OF_DAY,
-#     WEEK_DAYS,
-#     WEEKEND,
-# )
-
 
 
 # #################################################

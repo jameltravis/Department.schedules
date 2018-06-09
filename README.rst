@@ -6,7 +6,10 @@
 Department.schedules
 ==============================================================================
 
-Used for proposing course schedules at York College. 
+A tool for proposing schedules. Note: Any changes made after 2018-06-08 will have been done blindly. Until Further notice, I refactoring blindly. Let the open source flow through you.
+
+Project status/phase: Development
+Completion: 40%
 
 Features
 --------
@@ -41,13 +44,14 @@ Todo list:
 Recommendation:
 ---------------
 
-- Add new user property for faculty: ``'workloadHours'`` . If this is done, the Faculty Workload report could be implemented as a view, using data from the datagrid fields.
+- Add new user property for staff: ``'workloadHours'`` . If this is done, a Workload report could be implemented as a view, using data from the datagrid fields.
 
 Documentation
 -------------
 
 Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
-- Full documentation is coming soon!
+
+- Full documentation due after UAT
 
 
 Translations
@@ -64,7 +68,7 @@ Installation
 Install Department.schedules by adding it to your buildout::
 
     [sources]
-    Department.schedules = git https://git.york.cuny.edu/jtravis1/Department.schedules.git
+    Department.schedules = git https://github.com/jameltravis/Department.schedules.git
 
     ...
 
@@ -80,7 +84,7 @@ and then running ``bin/buildout`` from your zinstance or zeocluster directory
 Note: if ``[sources]`` isn't included in your buildout, include it. Feel free to copy and paste
 the following code above the ``[buildout]`` header ::
     [sources]
-    Department.schedules = git https://git.york.cuny.edu/jtravis1/Department.schedules.git
+    Department.schedules = git https://github.com/jameltravis/Department.schedules.git
 
 
 
@@ -88,15 +92,14 @@ the following code above the ``[buildout]`` header ::
 Contribute
 ----------
 
-- Source Code: https://git.york.cuny.edu/jtravis1/Department.schedules
-- Documentation: https://git.york.cuny.edu/jtravis1/Department.schedules
+- Source Code: git https://github.com/jameltravis/Department.schedules.git
+- Documentation: git https://github.com/jameltravis/Department.schedules.git
 
 
 Support
 -------
 
-If you are having issues, please call/email someone who will call/email someone else, who will then call/email me.
-Just kidding, email me at: jtravis1@york.cuny.edu
+email me at: j.travis07@hotmail.com
 
 
 License
